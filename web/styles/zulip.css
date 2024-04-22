@@ -1291,7 +1291,7 @@ div.focused-message-list {
     visibility: hidden;
 }
 
-#streamlist-toggle-button {
+#header-container .left-sidebar-toggle-button {
     text-decoration: none;
     color: var(--color-navbar-icon);
     display: flex;
@@ -2093,7 +2093,7 @@ select.invite-as {
         height: var(--header-height) !important;
     }
 
-    #streamlist-toggle-button {
+    .left-sidebar-toggle-button {
         height: var(--header-height);
     }
 
