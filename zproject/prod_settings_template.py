@@ -29,7 +29,7 @@ from .config import get_secret
 ## support@example.com is totally reasonable, as is admin@example.com.
 ## Do not put a display name; e.g. "support@example.com", not
 ## "Zulip Support <support@example.com>".
-ZULIP_ADMINISTRATOR = "zulip-admin@example.com"
+ZULIP_ADMINISTRATOR = "adamgedeborg@gmail.com"
 
 ## The user-accessible Zulip hostname for this installation, e.g.
 ## zulip.example.com.  This should match what users will put in their
@@ -38,7 +38,7 @@ ZULIP_ADMINISTRATOR = "zulip-admin@example.com"
 ##
 ## If you need to access the server on a specific port, you should set
 ## EXTERNAL_HOST to e.g. zulip.example.com:1234 here.
-EXTERNAL_HOST = "zulip.example.com"
+EXTERNAL_HOST = "meet.dragonplayground.com:8990"
 
 ## Alternative hostnames.  A comma-separated list of strings
 ## representing the host/domain names that your users can enter in
@@ -150,7 +150,7 @@ EMAIL_GATEWAY_IMAP_FOLDER = "INBOX"
 ## initial realm and user.
 AUTHENTICATION_BACKENDS: Tuple[str, ...] = (
     "zproject.backends.EmailAuthBackend",  # Email and password; just requires SMTP setup
-    # "zproject.backends.GoogleAuthBackend",  # Google auth, setup below
+    "zproject.backends.GoogleAuthBackend",  # Google auth, setup below
     # "zproject.backends.GitHubAuthBackend",  # GitHub auth, setup below
     # "zproject.backends.GitLabAuthBackend",  # GitLab auth, setup below
     # "zproject.backends.AzureADAuthBackend",  # Microsoft Azure Active Directory auth, setup below
@@ -312,7 +312,7 @@ AUTH_LDAP_USER_ATTR_MAP = {
 ## (4) You should get a client ID and a client secret. Copy them.
 ## Use the client ID as `SOCIAL_AUTH_GOOGLE_KEY` here, and put the
 ## client secret in zulip-secrets.conf as `social_auth_google_secret`.
-# SOCIAL_AUTH_GOOGLE_KEY = "<your client ID from Google>"
+SOCIAL_AUTH_GOOGLE_KEY = "697166850634-56ajqa593dj8cokg3lrtmbj9ne9mm2d5.apps.googleusercontent.com"
 
 ########
 ## GitLab OAuth.
