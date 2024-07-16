@@ -2390,7 +2390,7 @@ button {
         color: hsl(0deg 0% 27%);
 
         background-size: 40px auto;
-        background-image: url("../../images/DragonChat.png");
+        background-image: url("../../images/zulip-logo.svg");
         background-repeat: no-repeat;
     }
 
