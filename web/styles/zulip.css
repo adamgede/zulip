@@ -3316,8 +3316,18 @@ select.invite-as {
     }
 
     .jitsi-app-icon {
-        width: 20px;
-        height: 20px;
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+    }
+
+    .jitsi-overlay-url.uppy-c-btn-primary:hover {
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .jitsi-overlay-url.uppy-c-btn-primary:hover span {
+        text-decoration: underline;
     }
 }
 
