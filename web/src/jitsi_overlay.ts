@@ -8,7 +8,7 @@ export function initialize(): void {
     let facebookDeep = 'jitsi-meet://'; // Deep Link Application URL protocol.
     let facebookSecure = 'https://'; // Regular secure HTTPS URL protocol.
 
-    $(document.body).on('click', '[href*="jitsi-meet"]:not(.jitsi-overlay-url)', function(aEvent: MouseEvent) { // Only listen to a tags that have jitsi-meet on them, but are not the overlay urls.
+    $(document).on('click', '[href*="jitsi-meet"]:not(.jitsi-overlay-url)', function(aEvent: MouseEvent) { // Only listen to a tags that have jitsi-meet on them, but are not the overlay urls.
         aEvent.preventDefault(); // Don't navigate with these links (yet).
 
         if (aEvent.currentTarget != null) { // Only show if the target is populated.
