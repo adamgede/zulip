@@ -3276,7 +3276,7 @@ select.invite-as {
     }
 }
 
-#about-zulip {
+#about-zulip, #jitsi-overlay {
     .exit {
         font-size: 1.5rem;
         font-weight: 600;
