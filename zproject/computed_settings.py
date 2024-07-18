@@ -1140,7 +1140,7 @@ elif not EMAIL_HOST:
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_TIMEOUT = 15
+EMAIL_TIMEOUT = 1000
 
 if DEVELOPMENT:
     EMAIL_HOST = get_secret("email_host", "")

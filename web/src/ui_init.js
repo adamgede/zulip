@@ -50,6 +50,7 @@ import * as hotspots from "./hotspots";
 import * as i18n from "./i18n";
 import * as inbox_ui from "./inbox_ui";
 import * as invite from "./invite";
+import * as jitsi_overlay from "./jitsi_overlay";
 import * as left_sidebar_navigation_area from "./left_sidebar_navigation_area";
 import * as left_sidebar_navigation_area_popovers from "./left_sidebar_navigation_area_popovers";
 import * as lightbox from "./lightbox";
@@ -663,6 +664,7 @@ export function initialize_everything() {
     settings_sections.initialize();
     settings_toggle.initialize();
     about_zulip.initialize();
+    jitsi_overlay.initialize();
 
     // All overlays must be initialized before hashchange.js
     hashchange.initialize();
