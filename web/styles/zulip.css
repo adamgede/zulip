@@ -3314,6 +3314,11 @@ select.invite-as {
         max-height: 60vh;
         padding: 15px;
     }
+
+    .jitsi-app-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @media (width < $xl_min) or (height < $short_navbar_cutoff_height) {

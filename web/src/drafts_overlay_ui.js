@@ -250,7 +250,7 @@ export function launch() {
 
     function setup_event_handlers() {
         $("#drafts_table .restore-overlay-message").on("click", function (e) {
-            if (document.getSelection().type === "Range" || e.currentTarget.href.includes("jitsi-meet")) {
+            if (document.getSelection().type === "Range" || (e.target.tagName === 'A' && e.target.href.includes("jitsi-meet"))) {
                 return;
             }
 

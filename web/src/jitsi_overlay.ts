@@ -17,13 +17,18 @@ export function initialize(): void {
             $('#jitsi-app').attr('href', appUrl); // Update the Application link in the overlay.
             $('#jitsi-web').attr('href', webUrl); // Update the Web link in the overlay.
 
-            overlays.open_overlay({
-                name: "jitsi-overlay",
-                $overlay: $("#jitsi-overlay"),
-                on_close() {
-                    
-                },
-            });
+            if (overlays.any_active()) {
+                window.open(appUrl); // When in drafts, open the app url externally instead of showing the popup.
+            } else {
+                // Typical processing is to show the overlay where you can click either the app or web popup.
+                overlays.open_overlay({
+                    name: "jitsi-overlay",
+                    $overlay: $("#jitsi-overlay"),
+                    on_close() {
+                        
+                    },
+                });
+            }
         }
     });
 
