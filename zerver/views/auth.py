@@ -28,8 +28,7 @@ from two_factor.forms import BackupTokenForm
 from two_factor.views import LoginView as BaseTwoFactorLoginView
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
-from datetime import timezone
-import datetime
+from datetime import datetime, timezone
 
 from confirmation.models import (
     Confirmation,
