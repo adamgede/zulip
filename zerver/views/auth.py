@@ -573,7 +573,7 @@ def get_email_and_realm_from_jwt_authentication_request(
 @log_view_func
 def generate_jwt(request: HttpRequest) -> str:
     web_token = ""
-    if (request.user.is_authenticated)
+    if (request.user.is_authenticated):
         user_profile = request.user
         nbf = datetime.now(tz=timezone.utc)
         exp = nbf + datetime.timedelta(days=1)
