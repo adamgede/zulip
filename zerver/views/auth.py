@@ -28,7 +28,7 @@ from two_factor.forms import BackupTokenForm
 from two_factor.views import LoginView as BaseTwoFactorLoginView
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 from confirmation.models import (
     Confirmation,
@@ -570,12 +570,15 @@ def get_email_and_realm_from_jwt_authentication_request(
 
 @csrf_exempt
 @log_view_func
-def generate_jwt(request: HttpRequest) -> str:
+def generate_jwt(
+    request: HttpRequest
+) -> str:
     web_token = ""
     if (request.user.is_authenticated):
+        realm = get_realm_from_request(request)
         user_profile = request.user
         nbf = datetime.now(tz=timezone.utc)
-        exp = nbf + datetime.timedelta(days=1)
+        exp = nbf + timedelta(days=1)
         payload = {
             "aud": "jitsi",
             "context": {
@@ -593,7 +596,7 @@ def generate_jwt(request: HttpRequest) -> str:
                     "recording": "true"
                 },
                 "room": {
-                    "regex": false
+                    "regex": "false"
                 }
             },
             "exp": exp,
@@ -605,7 +608,6 @@ def generate_jwt(request: HttpRequest) -> str:
         key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
         [algorithm] = settings.JWT_AUTH_KEYS[realm.subdomain]["algorithms"]
         web_token = jwt.encode(payload, key, algorithm)
-    
     if web_token is None:
         raise JsonableError(_("Token could not be created"))
 
