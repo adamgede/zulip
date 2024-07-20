@@ -25,6 +25,7 @@ from zerver.views.attachments import list_by_user, remove
 from zerver.views.auth import (
     api_fetch_api_key,
     api_get_server_settings,
+    generate_jwt,
     json_fetch_api_key,
     jwt_fetch_api_key,
     log_into_subdomain,
@@ -533,6 +534,7 @@ i18n_urls = [
     path("accounts/login/start/sso/", start_remote_user_sso, name="start-login-sso"),
     path("accounts/login/sso/", remote_user_sso, name="login-sso"),
     path("accounts/login/jwt/", remote_user_jwt),
+    path("accounts/login/generatejwt/", generate_jwt),
     path("accounts/login/social/<backend>", start_social_login, name="login-social"),
     path("accounts/login/social/<backend>/<extra_arg>", start_social_login, name="login-social"),
     path("accounts/register/social/<backend>", start_social_signup, name="signup-social"),
