@@ -611,7 +611,7 @@ def generate_jwt(
     if web_token is None:
         raise JsonableError(_("Token could not be created"))
 
-    return web_token
+    return json_success(request, data={"token": web_token})
 
 @csrf_exempt
 @require_post
