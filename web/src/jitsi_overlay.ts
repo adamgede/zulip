@@ -12,10 +12,12 @@ export function initialize(): void {
         aEvent.preventDefault(); // Don't navigate with these links (yet).
 
         if (aEvent.currentTarget != null) { // Only show if the target is populated.
+            let originalUrl = (aEvent.currentTarget as HTMLAnchorElement).href; // Get the original link to be used later.
+
             fetch('accounts/login/generatejwt/').then((aResponse: Response) => {
                 aResponse.json().then((aValue: any) => {
                     let token = aValue.token; // Get token from the json response.
-                    let appUrl = (aEvent.currentTarget as HTMLAnchorElement).href + "?jwt=" + token; // Get the "Application" url from the clicked link, add on jwt token.
+                    let appUrl = originalUrl + "?jwt=" + token; // Using the "Application" url from the clicked link, add on jwt token.
                     let webUrl = appUrl.replace(schemeDeep, schemeSecure); // Replace the "Application" protocol with the "Web" secure protocol.
                     $('#jitsi-app').attr('href', appUrl); // Update the Application link in the overlay.
                     $('#jitsi-web').attr('href', webUrl); // Update the Web link in the overlay.
