@@ -1,28 +1,10 @@
-import $ from "jquery";
 import {page_params} from "./page_params";
 
 export const zoom_token_callbacks = new Map();
 export const video_call_xhrs = new Map();
 
 export function get_jitsi_server_url(): string | null {
-    let appToken = ""; // Default value of app token is blank.
-
-    $.ajax({
-        url: 'accounts/login/generatejwt/',   // Generate JWT URL.
-        method: 'GET',                        // GET type of request.
-        dataType: 'json',                     // Expecting JSON response
-        async: false,                         // Make the request synchronous
-        context: appToken,                    // Make the appToken the "this" so we can access it in the success callback.
-        success: function(aValue: any) {
-            if (aValue.result === "success") appToken = "&jwt=" + aValue.token; // If the request was successful, get token from the json response and prepare it for appending to url.
-        },
-        error: function(aJqXHR: XMLHttpRequest, aTextStatus: any, aErrorThrown: any) {
-            console.error('Error:', aJqXHR.status, aTextStatus, aErrorThrown); // Log the error.
-            throw aErrorThrown;  // Rethrow the error to be handled by the caller
-        }
-    });
-
-    return (page_params.realm_jitsi_server_url ?? page_params.server_jitsi_server_url) + appToken; // Using the "Application" url from the clicked link, add on jwt token.
+    return page_params.realm_jitsi_server_url ?? page_params.server_jitsi_server_url;
 }
 
 export function abort_video_callbacks(edit_message_id = ""): void {
