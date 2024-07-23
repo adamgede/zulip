@@ -9,13 +9,15 @@ export function initialize(): void {
         aEvent.preventDefault(); // Don't navigate with these links (yet).
 
         if (aEvent.currentTarget != null) { // Only show if the target is populated.
+            let originalUrl = (aEvent.currentTarget as HTMLAnchorElement).href; // Get the original link to be used later.
+
             fetch('accounts/login/generatejwt/').then((aResponse: Response) => { // Generate JWT URL.
                 aResponse.json().then((aValue: any) => {
                     let schemeDeep = 'jitsi-meet'; // Deep Link Application URL protocol.
                     let schemeSecure = 'https'; // Regular secure HTTPS URL protocol.
 
                     let appToken = (aValue.result === "success") ? "&jwt=" + aValue.token : ""; // If the request was successful, get token from the json response and prepare it for appending to url. Default value of app token is blank.
-                    let appUrl = (aEvent.currentTarget as HTMLAnchorElement).href + appToken; // Get the original link and append the app jwt token.
+                    let appUrl = originalUrl + appToken; // Using the original link, append the app jwt token.
                     let webUrl = appUrl.replace(schemeDeep, schemeSecure); // Replace the "Application" protocol with the "Web" secure protocol for the web version.
                     $('#jitsi-app').attr('href', appUrl); // Update the Application link in the overlay.
                     $('#jitsi-web').attr('href', webUrl); // Update the Web link in the overlay.
