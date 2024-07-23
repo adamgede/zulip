@@ -585,7 +585,7 @@ def generate_jwt(
                 "user": {
                     "id": user_profile.id,
                     "name": user_profile.full_name,
-                    "avatar": user_profile.avatar_url,
+                    "avatar": user_profile.avatar_source,
                     "email": user_profile.email,
                     "moderator": "true"
                 },
