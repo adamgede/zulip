@@ -614,6 +614,58 @@ def generate_jwt(
     return json_success(request, data={"token": web_token})
 
 @csrf_exempt
+@log_view_func
+def auth_jwt(
+    request: HttpRequest
+) -> HttpResponse:
+    web_token = ""
+
+    room = request.GET.get("room")
+    # state = request.GET.get("state") # Should we do something with this?
+    # code_challenge = request.GET.get("code_challenge") # Should we do something with this?
+
+    if (request.user.is_authenticated):
+        realm = get_realm_from_request(request)
+        user_profile = request.user
+        nbf = datetime.now(tz=timezone.utc)
+        exp = nbf + timedelta(days=1)
+        payload = {
+            "aud": "jitsi",
+            "context": {
+                "user": {
+                    "id": user_profile.id,
+                    "name": user_profile.full_name,
+                    "avatar": user_profile.avatar_source,
+                    "email": user_profile.email,
+                    "moderator": "true"
+                },
+                "features": {
+                    "livestreaming": "false",
+                    "outbound-call": "false",
+                    "transcription": "true",
+                    "recording": "true"
+                },
+                "room": {
+                    "regex": "false"
+                }
+            },
+            "exp": exp,
+            "iss": settings.JWT_APP_ID,
+            "nbf": nbf,
+            "room": room,
+            "sub": "*"
+        }
+        key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
+        [algorithm] = settings.JWT_AUTH_KEYS[realm.subdomain]["algorithms"]
+        web_token = jwt.encode(payload, key, algorithm)
+    if web_token is None:
+        raise JsonableError(_("Token could not be created"))
+
+    domain = settings.JITSI_SERVER_URL # Get URL from settings
+    redirect_url = f'{domain}/{room}?jwt={web_token}'
+    return redirect(redirect_url)
+
+@csrf_exempt
 @require_post
 @log_view_func
 @has_request_variables
