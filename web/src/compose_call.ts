@@ -12,8 +12,9 @@ export function get_jitsi_server_url(): string | null {
         method: 'GET',                        // GET type of request.
         dataType: 'json',                     // Expecting JSON response
         async: false,                         // Make the request synchronous
+        context: appToken,                    // Make the appToken the "this" so we can access it in the success callback.
         success: function(aValue: any) {
-            if (aValue.success) appToken = "&jwt=" + aValue.token; // If the request was successful, get token from the json response and prepare it for appending to url.
+            if (aValue.result === "success") appToken = "&jwt=" + aValue.token; // If the request was successful, get token from the json response and prepare it for appending to url.
         },
         error: function(aJqXHR: XMLHttpRequest, aTextStatus: any, aErrorThrown: any) {
             console.error('Error:', aJqXHR.status, aTextStatus, aErrorThrown); // Log the error.
