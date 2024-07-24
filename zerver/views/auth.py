@@ -652,7 +652,7 @@ def auth_jwt(
             "exp": exp,
             "iss": settings.JWT_APP_ID,
             "nbf": nbf,
-            "room": room,
+            "room": "*",
             "sub": "*"
         }
         key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
