@@ -29,6 +29,7 @@ from two_factor.views import LoginView as BaseTwoFactorLoginView
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
 from datetime import datetime, timezone, timedelta
+from zerver.decorator import zulip_login_required
 
 from confirmation.models import (
     Confirmation,
@@ -570,6 +571,7 @@ def get_email_and_realm_from_jwt_authentication_request(
 
 @csrf_exempt
 @log_view_func
+@zulip_login_required
 def generate_jwt(
     request: HttpRequest
 ) -> str:
@@ -615,6 +617,7 @@ def generate_jwt(
 
 @csrf_exempt
 @log_view_func
+@zulip_login_required
 def auth_jwt(
     request: HttpRequest
 ) -> HttpResponse:
