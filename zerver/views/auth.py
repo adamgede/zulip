@@ -1,8 +1,9 @@
+import json
 import logging
 import secrets
 from functools import wraps
 from typing import TYPE_CHECKING, Any, Callable, Dict, List, Mapping, Optional, Tuple, cast
-from urllib.parse import urlencode, urljoin
+from urllib.parse import urlencode, urljoin, unquote
 
 import jwt
 import orjson
@@ -30,6 +31,8 @@ from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
 from datetime import datetime, timezone, timedelta
 from zerver.decorator import zulip_login_required
+from zerver.lib.avatar import avatar_url
+from zerver.models import CustomProfileField, Realm, UserProfile
 
 from confirmation.models import (
     Confirmation,
@@ -576,96 +579,137 @@ def generate_jwt(
     request: HttpRequest
 ) -> str:
     web_token = ""
-    if (request.user.is_authenticated):
-        realm = get_realm_from_request(request)
-        user_profile = request.user
-        nbf = datetime.now(tz=timezone.utc)
-        exp = nbf + timedelta(days=1)
-        payload = {
-            "aud": "jitsi",
-            "context": {
-                "user": {
-                    "id": user_profile.id,
-                    "name": user_profile.full_name,
-                    "avatar": user_profile.avatar_source,
-                    "email": user_profile.email,
-                    "moderator": "true"
-                },
-                "features": {
-                    "livestreaming": "false",
-                    "outbound-call": "false",
-                    "transcription": "true",
-                    "recording": "true"
-                },
-                "room": {
-                    "regex": "false"
-                }
-            },
-            "exp": exp,
-            "iss": settings.JWT_APP_ID,
-            "nbf": nbf,
-            "room": "*",
-            "sub": "*"
-        }
-        key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
-        [algorithm] = settings.JWT_AUTH_KEYS[realm.subdomain]["algorithms"]
-        web_token = jwt.encode(payload, key, algorithm)
+    if request.user.is_authenticated:
+        web_token = jwt_helper(request, request.user)
     if web_token is None:
         raise JsonableError(_("Token could not be created"))
 
     return json_success(request, data={"token": web_token})
 
+def jwt_helper(
+    request: HttpRequest,
+    user_profile: UserProfile
+) -> str:
+    realm = get_realm_from_request(request)
+    nbf = datetime.now(tz=timezone.utc)
+    exp = nbf + timedelta(days=1)
+    meet_name = None
+    field_name = "Dragon Meet Username"
+
+    try:
+        for custom_field in user_profile.profile_data():
+            if custom_field["name"] == "Dragon Meet Username" and custom_field["value"] and custom_field["value"].strip():
+                meet_name = custom_field["value"].strip()
+    except CustomProfileField.DoesNotExist:
+        raise JsonableError(_("Field id {field_name} not found.").format(field_name=field_name))
+
+    if not meet_name:
+        meet_name = user_profile.full_name
+
+    logging.warning(
+        "Meet username determined to be: %s", meet_name
+    )
+
+    if user_profile.id == -1:
+        avatar = ""
+    elif user_profile.avatar_source == "U":
+        avatar = "https://chat.dragonplayground.com" + avatar_url(user_profile)
+    else:
+        avatar = avatar_url(user_profile)
+
+    payload = {
+        "aud": "jitsi",
+        "context": {
+            "user": {
+                "id": user_profile.id,
+                "name": meet_name,
+                "avatar": avatar,
+                "email": user_profile.email,
+                "moderator": "true"
+            },
+            "features": {
+                "livestreaming": "true",
+                "outbound-call": "false",
+                "transcription": "true",
+                "recording": "true"
+            },
+            "room": {
+                "regex": "false"
+            }
+        },
+        "exp": exp,
+        "iss": settings.JWT_APP_ID,
+        "nbf": nbf,
+        "room": "*",
+        "sub": "*"
+    }
+    key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
+    [algorithm] = settings.JWT_AUTH_KEYS[realm.subdomain]["algorithms"]
+    return jwt.encode(payload, key, algorithm) 
+
 @csrf_exempt
 @log_view_func
-@zulip_login_required
 def auth_jwt(
     request: HttpRequest
 ) -> HttpResponse:
-    web_token = ""
-
+    web_token: str = ""
     room = request.GET.get("room")
-    # state = request.GET.get("state") # Should we do something with this?
+    state = request.GET.get("state")
     # code_challenge = request.GET.get("code_challenge") # Should we do something with this?
 
-    if (request.user.is_authenticated):
-        realm = get_realm_from_request(request)
-        user_profile = request.user
-        nbf = datetime.now(tz=timezone.utc)
-        exp = nbf + timedelta(days=1)
-        payload = {
-            "aud": "jitsi",
-            "context": {
-                "user": {
-                    "id": user_profile.id,
-                    "name": user_profile.full_name,
-                    "avatar": user_profile.avatar_source,
-                    "email": user_profile.email,
-                    "moderator": "true"
-                },
-                "features": {
-                    "livestreaming": "false",
-                    "outbound-call": "false",
-                    "transcription": "true",
-                    "recording": "true"
-                },
-                "room": {
-                    "regex": "false"
-                }
-            },
-            "exp": exp,
-            "iss": settings.JWT_APP_ID,
-            "nbf": nbf,
-            "room": "*",
-            "sub": "*"
-        }
-        key = settings.JWT_AUTH_KEYS[realm.subdomain]["key"]
-        [algorithm] = settings.JWT_AUTH_KEYS[realm.subdomain]["algorithms"]
-        web_token = jwt.encode(payload, key, algorithm)
-    if web_token is None:
-        raise JsonableError(_("Token could not be created"))
+    ip_addr = request.META.get('REMOTE_ADDR', request.META.get('HTTP_X_FORWARDED_FOR'))
+    logging.warning(
+        "Request for JWT came from: %s", ip_addr
+    )
+
+    if ip_addr.startswith("172.2"):
+        if state:
+            # URL-decode the state parameter
+            decoded_state = unquote(state)
+
+            # Parse the decoded state as JSON
+            try:
+                state_data = json.loads(decoded_state)
+
+                # Access the 'config.iAmRecorder' value
+                if state_data.get('config.iAmRecorder'):
+                    logging.warning("Using recorder!!")
+                    recorder = UserProfile()
+                    recorder.id = -1
+                    recorder.name = "recorder"
+                    recorder.full_name = ""
+                    recorder.avatar = "recorder"
+                    recorder.email = "recorder"
+                    web_token = jwt_helper(request, recorder)
+                else:
+                    logging.warning("iAmRecorder is False or not present")
+                    return redirect(request.build_absolute_uri().replace('authjwt', 'authjwtuser'))
+            except json.JSONDecodeError:
+                logging.warning("Error decoding JSON")
+    else:
+        return redirect(request.build_absolute_uri().replace('authjwt', 'authjwtuser'))
 
     domain = settings.JITSI_SERVER_URL # Get URL from settings
-    redirect_url = f'{domain}/{room}?jwt={web_token}'
+    redirect_url = f'{domain}/{room}?jwt={web_token}&state={state}'
+    return redirect(redirect_url)
+
+@csrf_exempt
+@log_view_func
+@zulip_login_required
+def auth_jwt_user(
+    request: HttpRequest
+) -> str:
+    web_token = ""
+    room = request.GET.get("room")
+    state = request.GET.get("state")
+    # code_challenge = request.GET.get("code_challenge") # Should we do something with this?
+
+    if request.user.is_authenticated:
+        web_token = jwt_helper(request, request.user)
+    if web_token is None:
+        raise JsonableError(_("Token could not be created"))
+    domain = settings.JITSI_SERVER_URL # Get URL from settings
+    redirect_url = f'{domain}/{room}?jwt={web_token}&state={state}'
     return redirect(redirect_url)
 
 @csrf_exempt
