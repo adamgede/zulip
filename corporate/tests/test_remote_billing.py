@@ -106,7 +106,7 @@ class RemoteRealmBillingTestCase(BouncerTestCase):
             self.assert_in_success_response(
                 [
                     "To finish logging in, check your email account (",
-                    ") for a confirmation email from Zulip.",
+                    ") for a confirmation email from Dragon Chat.",
                     user.delivery_email,
                 ],
                 result,
@@ -117,7 +117,7 @@ class RemoteRealmBillingTestCase(BouncerTestCase):
                     f"{settings.SELF_HOSTING_MANAGEMENT_SUBDOMAIN}.{settings.EXTERNAL_HOST}"
                     r"(\S+)"
                 ),
-                email_body_contains="confirm your email and log in to Zulip plan management",
+                email_body_contains="confirm your email and log in to Dragon Chat plan management",
             )
             if return_without_clicking_confirmation_link:
                 return result
@@ -144,7 +144,7 @@ class RemoteRealmBillingTestCase(BouncerTestCase):
         # Final confirmation page - just confirm your details, possibly
         # agreeing to ToS if needed and an authenticated session will be granted:
         self.assertEqual(result.status_code, 200)
-        self.assert_in_success_response(["Log in to Zulip plan management"], result)
+        self.assert_in_success_response(["Log in to Dragon Chat plan management"], result)
         self.assert_in_success_response([user.realm.host], result)
 
         params = {}
@@ -1270,7 +1270,7 @@ class RemoteServerTestCase(BouncerTestCase):
             result = self.client_get(confirmation_url, subdomain="selfhosting")
         self.assertEqual(result.status_code, 200)
         self.assert_in_success_response(
-            [f"Log in to Zulip plan management for {self.server.hostname}", email], result
+            [f"Log in to Dragon Chat plan management for {self.server.hostname}", email], result
         )
         self.assert_in_success_response([f'action="{confirmation_url}"'], result)
         if expect_tos:

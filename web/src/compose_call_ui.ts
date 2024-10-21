@@ -138,10 +138,10 @@ export function generate_and_insert_audio_or_video_call_link(
     } else {
         // TODO: Use `new URL` to generate the URLs here.
         const video_call_id = util.random_int(100000000000000, 999999999999999);
-        const video_call_link = compose_call.get_jitsi_server_url() + "/" + video_call_id;
+        const video_call_link = compose_call.get_jitsi_server_url() + "/DragonCall" + video_call_id;
         if (is_audio_call) {
             insert_audio_call_url(
-                video_call_link + "#config.startWithVideoMuted=true",
+                video_call_link + "?config.startWithVideoMuted=true",
                 $target_textarea,
             );
         } else {
@@ -157,9 +157,12 @@ export function generate_and_insert_audio_or_video_call_link(
                that inconvenience is probably less important than letting
                the person organizing a call specify their intended
                call type (video vs audio).
+
+               * Update: typical Dragon Play calls don't really use webcams.
+               * Defaulting to no video is best for default.
            */
             insert_video_call_url(
-                video_call_link + "#config.startWithVideoMuted=false",
+                video_call_link + "?config.startWithVideoMuted=true",
                 $target_textarea,
             );
         }

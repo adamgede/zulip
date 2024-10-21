@@ -80,6 +80,7 @@ html_safelisted_schemes = (
     "im",
     "irc",
     "ircs",
+    "jitsi-meet",
     "magnet",
     "mailto",
     "matrix",
