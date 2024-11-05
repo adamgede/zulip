@@ -8,7 +8,7 @@ from zerver.lib.zulip_update_announcements import send_zulip_update_announcement
 
 
 class Command(ZulipBaseCommand):
-    help = """Script to send zulip update announcements to realms."""
+    help = """Script to send Dragon Chat update announcements to realms."""
 
     @override
     def add_arguments(self, parser: ArgumentParser) -> None:

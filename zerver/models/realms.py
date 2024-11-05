@@ -228,7 +228,7 @@ class Realm(models.Model):  # type: ignore[django-manager-missing] # django-stub
     enable_spectator_access = models.BooleanField(default=False)
 
     # Whether organization has given permission to be advertised in the
-    # Zulip communities directory.
+    # Dragon Chat communities directory.
     want_advertise_in_communities_directory = models.BooleanField(default=False, db_index=True)
 
     # Whether the organization has enabled inline image and URL previews.
@@ -395,7 +395,7 @@ class Realm(models.Model):  # type: ignore[django-manager-missing] # django-stub
     # Defaults for new users
     default_language = models.CharField(default="en", max_length=MAX_LANGUAGE_ID_LENGTH)
 
-    ZULIP_DISCUSSION_CHANNEL_NAME = gettext_lazy("Zulip")
+    ZULIP_DISCUSSION_CHANNEL_NAME = gettext_lazy("Dragon Chat")
     ZULIP_SANDBOX_CHANNEL_NAME = gettext_lazy("sandbox")
     DEFAULT_NOTIFICATION_STREAM_NAME = gettext_lazy("general")
     STREAM_EVENTS_NOTIFICATION_TOPIC_NAME = gettext_lazy("channel events")
@@ -540,8 +540,8 @@ class Realm(models.Model):  # type: ignore[django-manager-missing] # django-stub
         choices=[(t["id"], t["name"]) for t in ORG_TYPES.values()],
     )
 
-    UPGRADE_TEXT_STANDARD = gettext_lazy("Available on Zulip Cloud Standard. Upgrade to access.")
-    UPGRADE_TEXT_PLUS = gettext_lazy("Available on Zulip Cloud Plus. Upgrade to access.")
+    UPGRADE_TEXT_STANDARD = gettext_lazy("Available on Dragon Chat Cloud Standard. Upgrade to access.")
+    UPGRADE_TEXT_PLUS = gettext_lazy("Available on Dragon Chat Cloud Plus. Upgrade to access.")
     # plan_type controls various features around resource/feature
     # limitations for a Zulip organization on multi-tenant installations
     # like Zulip Cloud.

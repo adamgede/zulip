@@ -52,5 +52,5 @@ declare global {
     }
 
     const DEVELOPMENT: boolean;
-    const ZULIP_VERSION: string;
+    const DRAGON_CHAT_VERSION: string;
 }

@@ -24,7 +24,7 @@ def get_recipient_from_user_profiles(
     if forwarded_mirror_message:
         # In our mirroring integrations with some third-party
         # protocols, bots subscribed to the third-party protocol
-        # forward to Zulip messages that they received in the
+        # forward to Dragon Chat messages that they received in the
         # third-party service.  The permissions model for that
         # forwarding is that users can only submit to Zulip private
         # messages they personally received, and here we do the check

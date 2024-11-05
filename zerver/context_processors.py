@@ -13,7 +13,7 @@ from version import (
     LATEST_MAJOR_VERSION,
     LATEST_RELEASE_ANNOUNCEMENT,
     LATEST_RELEASE_VERSION,
-    ZULIP_VERSION,
+    DRAGON_CHAT_VERSION,
 )
 from zerver.lib.exceptions import InvalidSubdomainError
 from zerver.lib.i18n import get_language_list
@@ -196,7 +196,7 @@ def zulip_default_context(request: HttpRequest) -> dict[str, Any]:
         "find_team_link_disabled": find_team_link_disabled,
         "password_min_length": settings.PASSWORD_MIN_LENGTH,
         "password_min_guesses": settings.PASSWORD_MIN_GUESSES,
-        "zulip_version": ZULIP_VERSION,
+        "dragon_chat_version": DRAGON_CHAT_VERSION,
         "user_is_authenticated": request.user.is_authenticated,
         "settings_path": settings_path,
         "secrets_path": secrets_path,
@@ -216,7 +216,7 @@ def zulip_default_context(request: HttpRequest) -> dict[str, Any]:
             "environment": get_config("machine", "deploy_type", "development"),
             "realm_key": "www" if realm is None else realm.string_id or "(root)",
             "sample_rate": settings.SENTRY_FRONTEND_SAMPLE_RATE,
-            "server_version": ZULIP_VERSION,
+            "server_version": DRAGON_CHAT_VERSION,
             "trace_rate": settings.SENTRY_FRONTEND_TRACE_RATE,
         }
         if request.user.is_authenticated:

@@ -4,14 +4,14 @@
 {% block title %}
 <title>
     {% if is_sponsored or is_sponsorship_pending %}
-        Zulip
+    Dragon Chat
         {% if is_remotely_hosted %}
         {% else %}
         Cloud
         {% endif %}
         billing for {{ org_name }}
     {% else %}
-        Request Zulip
+        Request Dragon Chat
         {% if is_remotely_hosted %}
         {% else %}
         Cloud
@@ -28,18 +28,18 @@
     <div class="center-block new-style">
         <div class="alert alert-success sponsorship-page-success" id="sponsorship-status-success-message-top">
             {% if is_sponsored %}
-            Zulip is sponsoring a free <a href="{{ billing_base_url }}/plans/">{{ sponsorship_plan_name }}</a> plan for this organization. 🎉
+            Dragon Chat is sponsoring a free <a href="{{ billing_base_url }}/plans/">{{ sponsorship_plan_name }}</a> plan for this organization. 🎉
             {% else %}
             This organization has requested sponsorship for a
             {% if sponsorship_plan_name == "Business" %}
             discounted
             {% endif %}
-            <a href="{{ billing_base_url }}/plans/">{{ sponsorship_plan_name }}</a> plan.<br/><a href="mailto:support@zulip.com">Contact Zulip support</a> with any questions or updates.
+            <a href="{{ billing_base_url }}/plans/">{{ sponsorship_plan_name }}</a> plan.<br/><a href="mailto:support@zulip.com">Contact Dragon Chat support</a> with any questions or updates.
             {% endif %}
         </div>
         <div class="pitch">
             <h1>
-                Zulip
+                Dragon Chat
                 {% if is_remotely_hosted %}
                 {% else %}
                 Cloud
@@ -77,7 +77,7 @@
         <hr />
         <div class="support-link">
             <p>
-                To make changes to your plan or view your billing history <a href="mailto:support@zulip.com">contact Zulip support</a>.
+                To make changes to your plan or view your billing history <a href="mailto:support@zulip.com">contact Dragon Chat support</a>.
             </p>
         </div>
         {% endif %}
@@ -90,7 +90,7 @@
     <div class="center-block new-style">
         <div class="pitch">
             <h1>
-                Request Zulip
+                Request Dragon Chat
                 {% if is_remotely_hosted %}
                 {% else %}
                 Cloud

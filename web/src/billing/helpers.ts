@@ -141,7 +141,7 @@ export function update_discount_details(
 ): void {
     let discount_notice = is_remotely_hosted
         ? "Your organization may be eligible for a free Community plan, or a discounted Business plan."
-        : "Your organization may be eligible for a discount on Zulip Cloud Standard. Organizations whose members are not employees are generally eligible.";
+        : "Your organization may be eligible for a discount on Dragon Chat Cloud Standard. Organizations whose members are not employees are generally eligible.";
 
     try {
         const parsed_organization_type = organization_type_schema.parse(organization_type);

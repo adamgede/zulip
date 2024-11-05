@@ -171,14 +171,14 @@ viewer]({view_images_help_url})."""
 We make many improvements to Zulip beyond what we can share here. Learn about
 additional feature highlights, and other Zulip project updates since December
 2024, in the [blog post]({blog_post_9_0_url}) announcing today's release of
-Zulip Server 9.0.
+Dragon Chat Server 9.0.
 """
                 if settings.CORPORATE_ENABLED
                 else """
 
 We make many improvements to Zulip beyond what we can share here. Check out our
 [release announcement blog post]({blog_post_9_0_url}) to learn about additional
-feature highlights in Zulip Server 9.0, and other Zulip project updates.
+feature highlights in Dragon Chat Server 9.0, and other Zulip project updates.
 """
             )
         ).format(
@@ -220,7 +220,7 @@ def internal_prep_group_direct_message_for_old_realm(
     if realm.zulip_update_announcements_stream is None:
         content = """
 Zulip now supports [configuring]({organization_settings_url}) a stream where Zulip will
-send [updates]({zulip_update_announcements_help_url}) about new Zulip features.
+send [updates]({zulip_update_announcements_help_url}) about new Dragon Chat features.
 These notifications are currently turned off in your organization. If you configure
 a stream within one week, your organization will not miss any update messages.
 """.format(
@@ -349,22 +349,22 @@ def send_zulip_update_announcements_to_realm(
     new_zulip_update_announcements_level = None
 
     if realm_zulip_update_announcements_level is None:
-        # This realm predates the zulip update announcements feature, or
+        # This realm predates the Dragon Chat update announcements feature, or
         # was imported from another product (Slack, Mattermost, etc.).
         # Group DM the administrators to set or verify the stream for
-        # zulip update announcements.
+        # Dragon Chat update announcements.
         group_direct_message = internal_prep_group_direct_message_for_old_realm(realm, sender)
         messages = [group_direct_message]
         if realm_imported_from_other_product:
             new_zulip_update_announcements_level = latest_zulip_update_announcements_level
         else:
-            new_zulip_update_announcements_level = 0
+            new_zulip_update_announcements_level = -1
     elif realm.zulip_update_announcements_stream is None:
         # Realm misses the update messages in two cases:
         # Case 1: New realm created, and later stream manually set to None.
         # No group direct message is sent. Introductory message in the topic is sent.
         # Case 2: For old realm or realm imported from other product, we wait for A WEEK
-        # after sending group DMs to let admins configure stream for zulip update announcements.
+        # after sending group DMs to let admins configure stream for Dragon Chat update announcements.
         # After that, they miss updates until they don't configure.
         level_none_to_initial_auditlog = get_level_none_to_initial_auditlog(realm)
         if level_none_to_initial_auditlog is None or not (
@@ -373,7 +373,7 @@ def send_zulip_update_announcements_to_realm(
             new_zulip_update_announcements_level = latest_zulip_update_announcements_level
     else:
         # Wait for 24 hours after sending group DM to allow admins to change the
-        # stream for zulip update announcements from it's default value if desired.
+        # stream for Dragon Chat update announcements from it's default value if desired.
         if (
             realm_zulip_update_announcements_level == 0
             and is_group_direct_message_sent_to_admins_within_days(realm, days=1)

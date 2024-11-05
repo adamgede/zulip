@@ -5,7 +5,7 @@ import orjson
 import requests
 import responses
 
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 from zerver.actions.create_user import do_create_user
 from zerver.actions.streams import do_deactivate_stream
 from zerver.lib.exceptions import JsonableError
@@ -231,7 +231,7 @@ The webhook got a response with status code *400*.""",
 
             mock_send.assert_called_once()
             prepared_request = mock_send.call_args[0][0]
-            user_agent = "ZulipOutgoingWebhook/" + ZULIP_VERSION
+            user_agent = "ZulipOutgoingWebhook/" + DRAGON_CHAT_VERSION
             headers = {
                 "Content-Type": "application/json",
                 "User-Agent": user_agent,

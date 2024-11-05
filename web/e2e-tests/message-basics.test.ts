@@ -352,7 +352,7 @@ async function test_stream_search_filters_stream_list(page: Page): Promise<void>
     await page.waitForSelector((await get_stream_li(page, "Verona")) + ".highlighted_stream", {
         hidden: true,
     });
-    await page.waitForSelector((await get_stream_li(page, "Zulip")) + ".highlighted_stream", {
+    await page.waitForSelector((await get_stream_li(page, "Dragon Chat")) + ".highlighted_stream", {
         hidden: true,
     });
 
@@ -380,7 +380,7 @@ async function test_stream_search_filters_stream_list(page: Page): Promise<void>
     await page.waitForSelector((await get_stream_li(page, "Venice")) + ".highlighted_stream", {
         hidden: true,
     });
-    await page.waitForSelector((await get_stream_li(page, "Zulip")) + ".highlighted_stream", {
+    await page.waitForSelector((await get_stream_li(page, "Dragon Chat")) + ".highlighted_stream", {
         hidden: true,
     });
     await test_search_venice(page);

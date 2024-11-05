@@ -256,7 +256,7 @@ def parse_client(
         return "Unspecified", None
 
     client_name = user_agent["name"]
-    if client_name.startswith("Zulip"):
+    if client_name.startswith("Dragon Chat"):
         return client_name, user_agent.get("version")
 
     # We could show browser versions in logs, and it'd probably be a

@@ -535,7 +535,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin, UserBaseSettings):
     # Mirror dummies are fake (!is_active) users used to provide
     # message senders in our cross-protocol Zephyr<->Zulip content
     # mirroring integration, so that we can display mirrored content
-    # like native Zulip messages (with a name + avatar, etc.).
+    # like native Dragon Chat messages (with a name + avatar, etc.).
     is_mirror_dummy = models.BooleanField(default=False)
 
     # Users with this flag set are allowed to forge messages as sent by another

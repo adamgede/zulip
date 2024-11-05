@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 os.chdir(os.path.join(os.path.dirname(__file__), "../web"))
 
 
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 
 
 def build_for_prod_or_puppeteer(quiet: bool, config_name: str | None = None) -> NoReturn:
@@ -23,7 +23,7 @@ def build_for_prod_or_puppeteer(quiet: bool, config_name: str | None = None) -> 
     webpack_args = [
         "../node_modules/.bin/webpack-cli",
         "--mode=production",
-        f"--env=ZULIP_VERSION={ZULIP_VERSION}",
+        f"--env=DRAGON_CHAT_VERSION={DRAGON_CHAT_VERSION}",
     ]
     if quiet:
         webpack_args += ["--stats=errors-only"]

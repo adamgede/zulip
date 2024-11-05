@@ -40,7 +40,7 @@ gear_info = {
     "integrations": ['<i class="zulip-icon-git-pull-request"></i> Integrations', "/integrations/"],
     "plans": ['<i class="zulip-icon zulip-icon-rocket"></i> Plans and pricing', "/plans/"],
     "billing": ['<i class="zulip-icon zulip-icon-credit-card"></i> Billing', "/billing/"],
-    "about-zulip": ["About Zulip", "/#about-zulip"],
+    "about-zulip": ["About Dragon Chat", "/#about-zulip"],
 }
 
 gear_instructions = """
@@ -77,7 +77,7 @@ help_info = {
         "/#search-operators",
     ],
     "about-zulip": [
-        '<i class="zulip-icon zulip-icon-info"></i> About Zulip',
+        '<i class="zulip-icon zulip-icon-info"></i> About Dragon Chat',
         "/#about-zulip",
     ],
 }

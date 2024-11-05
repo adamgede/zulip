@@ -348,7 +348,7 @@ def do_create_realm(
     ]
     DefaultStream.objects.bulk_create(public_channels)
 
-    # New realm is initialized with the latest zulip update announcements
+    # New realm is initialized with the latest Dragon Chat update announcements
     # level as it shouldn't receive a bunch of old updates.
     realm.zulip_update_announcements_level = get_latest_zulip_update_announcements_level()
 

@@ -33,7 +33,7 @@ link:  Help center
 info:  Keyboard shortcuts
 info:  Message formatting
 info:  Search filters
-hash:  About Zulip
+hash:  About Dragon Chat
 ---
 link:  Desktop & mobile apps
 link:  Integrations

@@ -469,7 +469,7 @@ export function paste_handler_converter(paste_html: string): string {
     });
     turndownService.addRule("zulipImagePreview", {
         filter(node) {
-            // select image previews in Zulip messages
+            // select image previews in Dragon Chat messages
             return (
                 node.classList.contains("message_inline_image") && node.firstChild?.nodeName === "A"
             );
@@ -507,7 +507,7 @@ export function paste_handler_converter(paste_html: string): string {
         // We don't have a way to get the original LaTeX code from the rendered
         // `math` so we drop it to avoid pasting gibberish.
         // In the future, we could have a data-original-latex feature in Zulip HTML
-        // if we wanted to paste the original LaTeX for Zulip messages.
+        // if we wanted to paste the original LaTeX for Dragon Chat messages.
         filter: "math",
 
         replacement() {

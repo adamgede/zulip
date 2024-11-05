@@ -469,7 +469,7 @@ def do_send_missedmessage_events_reply_in_zulip(
     if reply_to_address == FromAddress.NOREPLY:
         reply_to_name = ""
     else:
-        reply_to_name = "Zulip"
+        reply_to_name = "Dragon Chat"
 
     senders = list({m["message"].sender for m in missed_messages})
     if missed_messages[0]["message"].recipient.type == Recipient.DIRECT_MESSAGE_GROUP:

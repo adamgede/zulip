@@ -25,19 +25,19 @@ import {current_user, realm} from "./state_data";
 const admin_settings_label = {
     // Organization profile
     realm_want_advertise_in_communities_directory: $t({
-        defaultMessage: "Advertise organization in the Zulip communities directory",
+        defaultMessage: "Advertise organization in the Dragon Chat communities directory",
     }),
     // Organization settings
     realm_allow_edit_history: $t({defaultMessage: "Enable message edit history"}),
     realm_mandatory_topics: $t({defaultMessage: "Require topics in channel messages"}),
     realm_new_stream_announcements_stream: $t({defaultMessage: "New channel announcements"}),
     realm_signup_announcements_stream: $t({defaultMessage: "New user announcements"}),
-    realm_zulip_update_announcements_stream: $t({defaultMessage: "Zulip update announcements"}),
+    realm_zulip_update_announcements_stream: $t({defaultMessage: "Dragon Chat update announcements"}),
     realm_inline_image_preview: $t({
         defaultMessage: "Show previews of uploaded and linked images and videos",
     }),
     realm_inline_url_embed_preview: $t({defaultMessage: "Show previews of linked websites"}),
-    realm_send_welcome_emails: $t({defaultMessage: "Send emails introducing Zulip to new users"}),
+    realm_send_welcome_emails: $t({defaultMessage: "Send emails introducing Dragon Chat to new users"}),
     realm_message_content_allowed_in_email_notifications: $t({
         defaultMessage: "Allow message content in message notification emails",
     }),
@@ -274,7 +274,7 @@ export function build_page() {
         $("#realm_can_access_all_users_group_widget").prop("disabled", true);
         const opts = {
             content: $t({
-                defaultMessage: "This feature is available on Zulip Cloud Plus. Upgrade to access.",
+                defaultMessage: "This feature is available on Dragon Chat Cloud Plus. Upgrade to access.",
             }),
         };
 

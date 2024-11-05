@@ -139,7 +139,7 @@ def create_confirmation_object(
 
     # Some confirmation objects, like those for realm creation or those used
     # for the self-hosted management flows, are not associated with a realm
-    # hosted by this Zulip server.
+    # hosted by This Dragon Chat server.
     if no_associated_realm_object:
         realm = None
     else:

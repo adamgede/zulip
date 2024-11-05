@@ -130,11 +130,11 @@ args = parser.parse_args()
 if len(args.version) > 2:
     parser.error("Expects 0 to 2 version number(s)")
 
-lower_zulip_version = args.version[0]
+lower_dragon_chat_version = args.version[0]
 if len(args.version) == 1:
-    upper_zulip_version = "main"
+    upper_dragon_chat_version = "main"
 else:
-    upper_zulip_version = args.version[1]
+    upper_dragon_chat_version = args.version[1]
 
 subprocess.check_call(["git", "fetch"], cwd=find_path("zulip"))
 
@@ -146,12 +146,12 @@ subprocess.check_call(["git", "fetch"], cwd=find_path("zulip"))
 # time.
 try:
     lower_time = subprocess.check_output(
-        ["git", "log", "-1", "--format=%ci", lower_zulip_version],
+        ["git", "log", "-1", "--format=%ci", lower_dragon_chat_version],
         stderr=subprocess.DEVNULL,
         text=True,
     ).split()[0]
     upper_time = subprocess.check_output(
-        ["git", "log", "-1", "--format=%ci", upper_zulip_version],
+        ["git", "log", "-1", "--format=%ci", upper_dragon_chat_version],
         stderr=subprocess.DEVNULL,
         text=True,
     ).split()[0]
@@ -160,7 +160,7 @@ except subprocess.CalledProcessError:
     sys.exit(0)
 
 print(
-    f"Commit range {lower_zulip_version}..{upper_zulip_version} corresponds to {lower_time} to {upper_time}"
+    f"Commit range {lower_dragon_chat_version}..{upper_dragon_chat_version} corresponds to {lower_time} to {upper_time}"
 )
 
 repository_dict: dict[str, int] = defaultdict(int)
@@ -170,8 +170,8 @@ process_repo(
     out_dict=out_dict,
     repo_short="zulip",
     repo_full="zulip/zulip",
-    lower_version=lower_zulip_version,
-    upper_version=upper_zulip_version,
+    lower_version=lower_dragon_chat_version,
+    upper_version=upper_dragon_chat_version,
 )
 
 # TODO: We should migrate the last couple repositories to use the
@@ -226,5 +226,5 @@ for committer_name, commit_count in sorted(
 print(f"Excluded {bot_commits} commits authored by bots.")
 print(
     f"{grand_total} total commits by {len(out_dict)} contributors between "
-    f"{lower_zulip_version} and {upper_zulip_version}."
+    f"{lower_dragon_chat_version} and {upper_dragon_chat_version}."
 )

@@ -128,7 +128,7 @@ def parse_version_from(deploy_path: str, merge_base: bool = False) -> str:
         except subprocess.CalledProcessError:
             pass
     try:
-        varname = "ZULIP_MERGE_BASE" if merge_base else "ZULIP_VERSION"
+        varname = "ZULIP_MERGE_BASE" if merge_base else "DRAGON_CHAT_VERSION"
         return subprocess.check_output(
             [sys.executable, "-c", f"from version import {varname}; print({varname})"],
             cwd=deploy_path,

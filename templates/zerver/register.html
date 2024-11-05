@@ -2,7 +2,7 @@
 {% set entrypoint = "register" %}
 
 {% block title %}
-<title>{{ _("Registration") }} | Zulip</title>
+<title>{{ _("Registration") }} | Dragon Chat</title>
 {% endblock %}
 
 {#
@@ -104,7 +104,7 @@ Form is validated both client-side using jquery-validation (see signup.js) and s
                             {% endfor %}
                         </select>
                     </div>
-                    <label for="source_realm_id" class="inline-block">{{ _('Import settings from existing Zulip account') }}
+                    <label for="source_realm_id" class="inline-block">{{ _('Import settings from existing Dragon Chat account') }}
                         <a href="{{ root_domain_url }}/help/import-your-settings"><i class="fa fa-question-circle"></i></a>
                     </label>
                 </div>
@@ -124,7 +124,7 @@ Form is validated both client-side using jquery-validation (see signup.js) and s
                             {% endfor %}
                         {% endif %}
                     {% endif %}
-                    <p class="registration-form-hint">{{ _('This is how your account is displayed in Zulip.') }}</p>
+                    <p class="registration-form-hint">{{ _('This is how your account is displayed in Dragon Chat.') }}</p>
                 </div>
 
                 <div class="input-box" id="profile_info_section" style="display:none;">
@@ -199,9 +199,9 @@ Form is validated both client-side using jquery-validation (see signup.js) and s
             {% if creating_new_realm %}
             <div class="input-group input-box" id="how-realm-creator-found-zulip">
                 <label for="how_realm_creator_found_zulip">
-                    {{ _('How did you first hear about Zulip?') }}
+                    {{ _('How did you first hear about Dragon Chat?') }}
                     {% if not corporate_enabled %}
-                    <i class="fa fa-question-circle-o" aria-hidden="true" data-tippy-content="{% trans %}This value is used only if you sign up for a plan, in which case it will be sent to the Zulip team.{% endtrans %}"></i>
+                    <i class="fa fa-question-circle-o" aria-hidden="true" data-tippy-content="{% trans %}This value is used only if you sign up for a plan, in which case it will be sent to the Dragon Chat team.{% endtrans %}"></i>
                     {% endif %}
                 </label>
                 <select name="how_realm_creator_found_zulip" class="required">
@@ -246,7 +246,7 @@ Form is validated both client-side using jquery-validation (see signup.js) and s
                         <input id="id_enable_marketing_emails" type="checkbox" name="enable_marketing_emails"
                           checked="checked" />
                         <span></span>
-                        {% trans %}Subscribe me to Zulip's low-traffic newsletter (a few emails a year).{% endtrans %}
+                        {% trans %}Subscribe me to Dragon Chat's low-traffic newsletter (a few emails a year).{% endtrans %}
                     </label>
                 </div>
                 {% endif %}

@@ -7,7 +7,7 @@
   "Browse 1 more stream": "Gennemse 1 kanal mere",
   "Browse streams": "Gennemse kanaler",
   "Browse {can_subscribe_stream_count} more streams": "Gennemse {can_subscribe_stream_count} andre kanaler",
-  "Configure how Zulip notifies you about new messages. In muted streams, stream notification settings apply only to unmuted topics.": "Konfigurer hvordan Zulip underretter dig om nye beskeder. I kanaler uden lyd vil indstillinger for kanalnotifikationer kun gælde for emner med lyd.",
+  "Configure how Dragon Chat notifies you about new messages. In muted streams, stream notification settings apply only to unmuted topics.": "Konfigurer hvordan Zulip underretter dig om nye beskeder. I kanaler uden lyd vil indstillinger for kanalnotifikationer kun gælde for emner med lyd.",
   "Create a stream": "Opret en kanal",
   "Create new stream": "Opret ny kanal",
   "Create stream": "Opret kanal",

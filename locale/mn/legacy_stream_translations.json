@@ -99,7 +99,7 @@
   "View stream messages": "Группын зурвасуудыг харах",
   "View streams": "Чат өрөөнүүдийг харах",
   "Warning: <strong>#{stream_name}</strong> is a private stream.": "Анхааруулга: <strong>#{stream_name} </strong>нь хувийн чат өрөө юм.",
-  "Which parts of the email should be included in the Zulip message sent to this stream?": "Энэ чат өрөөрүү илгээсэн Оффис чат зурваст имэйлийн аль хэсгийг оруулах ёстой вэ?",
+  "Which parts of the email should be included in the Dragon Chat message sent to this stream?": "Энэ чат өрөөрүү илгээсэн Оффис чат зурваст имэйлийн аль хэсгийг оруулах ёстой вэ?",
   "Who can access the stream?": "Хэн групп -т хандах эрхтэй вэ?",
   "Who can add users to streams": "Хэн групп -т хэрэглэгч нэмэх эрхтэй вэ",
   "Who can create private streams": "Хэн хувийн групп үүсгэх эрхтэй вэ",

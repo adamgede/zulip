@@ -308,7 +308,7 @@ class ChangeSettingsTest(ZulipTestCase):
                     new_password="ignored",
                 ),
             )
-            self.assert_json_error(result, "Your Zulip password is managed in LDAP")
+            self.assert_json_error(result, "Your Dragon Chat password is managed in LDAP")
 
             result = self.client_patch(
                 "/json/settings",
@@ -317,7 +317,7 @@ class ChangeSettingsTest(ZulipTestCase):
                     new_password="ignored",
                 ),
             )
-            self.assert_json_error(result, "Your Zulip password is managed in LDAP")
+            self.assert_json_error(result, "Your Dragon Chat password is managed in LDAP")
 
         with (
             self.settings(
@@ -348,7 +348,7 @@ class ChangeSettingsTest(ZulipTestCase):
                     new_password="ignored",
                 ),
             )
-            self.assert_json_error(result, "Your Zulip password is managed in LDAP")
+            self.assert_json_error(result, "Your Dragon Chat password is managed in LDAP")
 
     def do_test_change_user_setting(self, setting_name: str) -> None:
         test_changes: dict[str, Any] = dict(

@@ -34,7 +34,7 @@ logging.Formatter.converter = time.gmtime
 logging.basicConfig(format="%(asctime)s upgrade-zulip: %(message)s", level=logging.INFO)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("tarball", help="Path to Zulip Server tarball")
+parser.add_argument("tarball", help="Path to Dragon Chat Server tarball")
 args, extra_options = parser.parse_known_args()
 
 error_rerun_script = f"{DEPLOYMENTS_DIR}/current/scripts/upgrade-zulip {args.tarball}"

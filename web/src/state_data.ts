@@ -390,10 +390,10 @@ const realm_schema = z.object({
     settings_send_digest_emails: NOT_TYPED_YET,
     stop_words: z.array(z.string()),
     upgrade_text_for_wide_organization_logo: NOT_TYPED_YET,
-    zulip_feature_level: NOT_TYPED_YET,
+    dragon_chat_feature_level: NOT_TYPED_YET,
     zulip_merge_base: z.string(),
     zulip_plan_is_not_limited: z.boolean(),
-    zulip_version: z.string(),
+    dragon_chat_version: z.string(),
 });
 
 export const state_data_schema = z

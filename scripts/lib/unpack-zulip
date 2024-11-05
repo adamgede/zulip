@@ -32,7 +32,7 @@ extract_path = tempfile.mkdtemp()
 subprocess.check_call(["tar", "-xf", tarball_path, "-C", extract_path])
 
 new_version = get_deployment_version(extract_path)
-current_version = version.ZULIP_VERSION
+current_version = version.DRAGON_CHAT_VERSION
 if is_invalid_upgrade(current_version, new_version):
     print(
         FAIL + "Your current version is very old. Please first upgrade to version "

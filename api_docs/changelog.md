@@ -13,7 +13,7 @@ with full details in **Changes** entries in the API documentation for
 the modified endpoint(s).
 
 When using an API endpoint whose behavior has changed, Zulip API
-clients should check the `zulip_feature_level` field, present in the
+clients should check the `dragon_chat_feature_level` field, present in the
 [`GET /server_settings`](/api/get-server-settings) and [`POST
 /register`](/api/register-queue) responses, to determine the API
 format used by the Zulip server that they are interacting with.
@@ -1924,8 +1924,8 @@ No changes; feature level used for Zulip 4.0 release.
   user objects sent in `realm_user` events.
 * [`POST /register`](/api/register-queue): Added `role` field
   in the user objects returned in the `realm_users` field.
-* [`GET /events`](/api/get-events): Added new `zulip_version` and
-  `zulip_feature_level` fields to the `restart` event.
+* [`GET /events`](/api/get-events): Added new `dragon_chat_version` and
+  `dragon_chat_feature_level` fields to the `restart` event.
 
 **Feature level 58**
 
@@ -2341,10 +2341,10 @@ No changes; feature level used for Zulip 3.0 release.
 
 **Feature level 3**
 
-* [`POST /register`](/api/register-queue): `zulip_version` and
-  `zulip_feature_level` are always returned in the endpoint response.
+* [`POST /register`](/api/register-queue): `dragon_chat_version` and
+  `dragon_chat_feature_level` are always returned in the endpoint response.
   Previously, they were only present if `event_types` included
-  `zulip_version`.
+  `dragon_chat_version`.
 * Added new `presence_enabled` user notification setting; previously
   [presence](/help/status-and-availability) was always enabled.
 
@@ -2371,10 +2371,10 @@ No changes; feature level used for Zulip 3.0 release.
   `prev_stream` is present in `snapshot` objects within `message_history`
   object when a message was moved to another stream.
 * [`GET /server_settings`](/api/get-server-settings): Added
-  `zulip_feature_level`, which can be used by clients to detect which
+  `dragon_chat_feature_level`, which can be used by clients to detect which
   of the features described in this changelog are supported.
-* [`POST /register`](/api/register-queue): Added `zulip_feature_level`
-  to the response if `zulip_version` is among the requested
+* [`POST /register`](/api/register-queue): Added `dragon_chat_feature_level`
+  to the response if `dragon_chat_version` is among the requested
   `event_types`.
 * [`GET /users`](/api/get-users): User objects for bots now
   contain a `bot_owner_id`, replacing the previous `bot_owner` field

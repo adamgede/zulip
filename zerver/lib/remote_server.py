@@ -13,7 +13,7 @@ from pydantic import UUID4, BaseModel, ConfigDict, Field, Json, field_validator
 
 from analytics.lib.counts import LOGGING_COUNT_STAT_PROPERTIES_NOT_SENT_TO_BOUNCER
 from analytics.models import InstallationCount, RealmCount
-from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, ZULIP_VERSION
+from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, DRAGON_CHAT_VERSION
 from zerver.actions.realm_settings import (
     do_set_push_notifications_enabled_end_timestamp,
     do_set_realm_property,
@@ -147,7 +147,7 @@ def send_to_push_bouncer(
     url = urljoin(settings.ZULIP_SERVICES_URL, "/api/v1/remotes/" + endpoint)
     api_auth = requests.auth.HTTPBasicAuth(settings.ZULIP_ORG_ID, settings.ZULIP_ORG_KEY)
 
-    headers = {"User-agent": f"ZulipServer/{ZULIP_VERSION}"}
+    headers = {"User-agent": f"ZulipServer/{DRAGON_CHAT_VERSION}"}
     headers.update(extra_headers)
 
     if endpoint == "server/analytics":
@@ -440,7 +440,7 @@ def send_server_data_to_push_bouncer(consider_usage_statistics: bool = True) -> 
         installation_counts=installation_count_data,
         realmauditlog_rows=realmauditlog_data,
         realms=get_realms_info_for_push_bouncer(),
-        version=ZULIP_VERSION,
+        version=DRAGON_CHAT_VERSION,
         merge_base=ZULIP_MERGE_BASE,
         api_feature_level=API_FEATURE_LEVEL,
     )

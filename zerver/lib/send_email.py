@@ -177,7 +177,7 @@ def build_email(
         logger.warning("Missing language for email template '%s'", template_prefix)
 
     if from_name is None:
-        from_name = "Zulip"
+        from_name = "Dragon Chat"
     if from_address is None:
         from_address = FromAddress.NOREPLY
     if from_address == FromAddress.tokenized_no_reply_placeholder:
@@ -209,7 +209,7 @@ def build_email(
     if reply_to_email is not None:
         reply_to = [reply_to_email]
     # Remove the from_name in the reply-to for noreply emails, so that users
-    # see "noreply@..." rather than "Zulip" or whatever the from_name is
+    # see "noreply@..." rather than "Dragon Chat" or whatever the from_name is
     # when they reply in their email client.
     elif from_address == FromAddress.NOREPLY:
         reply_to = [FromAddress.NOREPLY]

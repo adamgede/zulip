@@ -14,7 +14,7 @@ import assets from "./webpack.assets.json";
 import dev_assets from "./webpack.dev-assets.json";
 
 const config = (
-    env: {minimize?: boolean; ZULIP_VERSION?: string} = {},
+    env: {minimize?: boolean; DRAGON_CHAT_VERSION?: string} = {},
     argv: {mode?: string},
 ): webpack.Configuration[] => {
     const production: boolean = argv.mode === "production";
@@ -200,7 +200,7 @@ const config = (
         plugins: [
             new DefinePlugin({
                 DEVELOPMENT: JSON.stringify(!production),
-                ZULIP_VERSION: JSON.stringify(env.ZULIP_VERSION ?? "development"),
+                DRAGON_CHAT_VERSION: JSON.stringify(env.DRAGON_CHAT_VERSION ?? "development"),
             }),
             new DebugRequirePlugin(),
             new BundleTracker({

@@ -595,9 +595,9 @@ exports.fixtures = {
 
     restart: {
         type: "restart",
-        zulip_version: "9.0-dev-753-gced3e85da9",
+        dragon_chat_version: "9.0-dev-753-gced3e85da9",
         zulip_merge_base: "9.0-dev-743-g54053c1d28",
-        zulip_feature_level: 237,
+        dragon_chat_feature_level: 237,
         server_generation: 1707511515,
     },
 

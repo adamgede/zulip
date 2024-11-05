@@ -30,7 +30,7 @@ from analytics.lib.counts import CountStat, LoggingCountStat
 from analytics.models import InstallationCount, RealmCount, UserCount
 from corporate.lib.stripe import RemoteRealmBillingSession
 from corporate.models import CustomerPlan
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 from zerver.actions.create_realm import do_create_realm
 from zerver.actions.message_delete import do_delete_messages
 from zerver.actions.message_flags import do_mark_stream_messages_as_read, do_update_message_flags
@@ -1537,7 +1537,7 @@ class AnalyticsBouncerTest(BouncerTestCase):
         audit_log_max_id = audit_log.id
 
         remote_server.refresh_from_db()
-        assert remote_server.last_version == ZULIP_VERSION
+        assert remote_server.last_version == DRAGON_CHAT_VERSION
 
         remote_audit_log_count = RemoteRealmAuditLog.objects.count()
 

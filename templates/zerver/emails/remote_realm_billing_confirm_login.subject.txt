@@ -1,1 +1,1 @@
-{% trans %}Confirm email for Zulip plan management{% endtrans %}
+{% trans %}Confirm email for Dragon Chat plan management{% endtrans %}

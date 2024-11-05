@@ -407,7 +407,7 @@ export function initialize_everything(state_data) {
             - some fairly dynamic data, like which of
               the other users are "present"
 
-        Except for the actual Zulip messages, basically
+        Except for the actual Dragon Chat messages, basically
         any data that you see in the app soon after page
         load comes from `state_data`.
 

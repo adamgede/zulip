@@ -1,16 +1,16 @@
 import os
 
-ZULIP_VERSION = "9.2"
+DRAGON_CHAT_VERSION = "9.2"
 
 # Add information on number of commits and commit hash to version, if available
 zulip_git_version_file = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "zulip-git-version"
 )
-lines = [ZULIP_VERSION, ""]
+lines = [DRAGON_CHAT_VERSION, ""]
 if os.path.exists(zulip_git_version_file):
     with open(zulip_git_version_file) as f:
         lines = [*f, "", ""]
-ZULIP_VERSION = lines.pop(0).strip()
+DRAGON_CHAT_VERSION = lines.pop(0).strip()
 ZULIP_MERGE_BASE = lines.pop(0).strip()
 
 LATEST_MAJOR_VERSION = "9.0"

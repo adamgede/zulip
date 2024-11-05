@@ -1,7 +1,7 @@
 {% extends "zerver/portico.html" %}
 
 {% block title %}
-<title>{{ _("No organization found") }} | Zulip</title>
+<title>{{ _("No organization found") }} | Dragon Chat</title>
 {% endblock %}
 
 {% block portico_content %}
@@ -14,12 +14,12 @@
 
         <div class="app-main white-box">
             <p>
-                {% trans %}There is no Zulip organization at <b>{{ current_url }}</b>.{% endtrans %}
+                {% trans %}There is no Dragon Chat organization at <b>{{ current_url }}</b>.{% endtrans %}
                 <br />
                 {% if corporate_enabled %}
-                    {% trans %}Please try a different URL, or <a href="mailto:{{ support_email }}">contact Zulip support</a>.{% endtrans %}
+                    {% trans %}Please try a different URL, or <a href="mailto:{{ support_email }}">contact Dragon Chat support</a>.{% endtrans %}
                 {% else %}
-                    {% trans %}Please try a different URL, or <a href="mailto:{{ support_email }}">contact this Zulip server's administrators</a>.{% endtrans %}
+                    {% trans %}Please try a different URL, or <a href="mailto:{{ support_email }}">contact this Dragon Chat server's administrators</a>.{% endtrans %}
                 {% endif %}
             </p>
         </div>

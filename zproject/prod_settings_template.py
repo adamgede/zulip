@@ -3,7 +3,7 @@ from typing import Any
 from .config import get_secret
 
 ################################################################
-## Zulip Server settings.
+## Dragon Chat Server settings.
 ##
 ## This file controls settings that affect the whole Zulip server.
 ## See our documentation at:
@@ -62,7 +62,7 @@ EXTERNAL_HOST = "zulip.example.com"
 ################
 ## Outgoing email (SMTP) settings.
 ##
-## Zulip needs to be able to send email (that is, use SMTP) so it can
+## Dragon Chat needs to be able to send email (that is, use SMTP) so it can
 ## confirm new users' email addresses and send notifications.
 ##
 ## If you don't already have an SMTP provider, free ones are available.
@@ -106,7 +106,7 @@ EXTERNAL_HOST = "zulip.example.com"
 ## "zulip.example.com", email senders names will include:
 ## * "zulip.example.com notifications" (message notification emails).
 ## * "zulip.example.com account security" (account security emails).
-# INSTALLATION_NAME = "My Zulip Server"
+# INSTALLATION_NAME = "My Dragon Chat Server"
 
 ## Many countries and bulk mailers require certain types of email to display
 ## a physical mailing address to comply with anti-spam legislation.

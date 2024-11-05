@@ -3440,7 +3440,7 @@ class RealmPropertyActionTest(BaseAction):
             description=["Realm description", "New description"],
             digest_weekday=[0, 1, 2],
             message_retention_days=[10, 20],
-            name=["Zulip", "New Name"],
+            name=["Dragon Chat", "New Name"],
             waiting_period_threshold=[1000, 2000],
             create_web_public_stream_policy=Realm.CREATE_WEB_PUBLIC_STREAM_POLICY_TYPES,
             invite_to_stream_policy=Realm.COMMON_POLICY_TYPES,

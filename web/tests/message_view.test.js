@@ -426,7 +426,7 @@ run_test("show_empty_narrow_message", ({mock_template}) => {
         $(".empty_feed_notice_main").html(),
         empty_narrow_html(
             "translated: You have not sent any direct messages to yourself yet!",
-            "translated HTML: Use this space for personal notes, or to test out Zulip features.",
+            "translated HTML: Use this space for personal notes, or to test out Dragon Chat features.",
         ),
     );
 

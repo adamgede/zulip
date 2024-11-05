@@ -15,7 +15,7 @@ from scripts.lib.zulip_tools import (
     get_config_file,
     parse_version_from,
 )
-from version import ZULIP_VERSION as NEW_VERSION
+from version import DRAGON_CHAT_VERSION as NEW_VERSION
 
 assert_not_running_as_root()
 setup_path()

@@ -4065,7 +4065,7 @@ paths:
                                     - $ref: "#/components/schemas/EventTypeSchema"
                                     - enum:
                                         - restart
-                                zulip_version:
+                                dragon_chat_version:
                                   type: string
                                   description: |
                                     The Zulip version number, in the format where this appears
@@ -4081,7 +4081,7 @@ paths:
                                     [register](/api/register-queue) responses.
 
                                     **Changes**: New in Zulip 5.0 (feature level 88).
-                                zulip_feature_level:
+                                dragon_chat_feature_level:
                                   type: integer
                                   description: |
                                     The [Zulip feature level](/api/changelog) of the server
@@ -4106,8 +4106,8 @@ paths:
                                   "id": 0,
                                   "server_generation": 1619334181,
                                   "type": "restart",
-                                  "zulip_feature_level": 57,
-                                  "zulip_version": "5.0-dev-1650-gc3fd37755f",
+                                  "dragon_chat_feature_level": 57,
+                                  "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
                                   "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                                 }
                             - type: object
@@ -8113,7 +8113,7 @@ paths:
         Initially, only you will be able to access the link. To share the
         uploaded file, you'll need to [send a message][send-message]
         containing the resulting link. Users who can already access the link
-        can reshare it with other users by sending additional Zulip messages
+        can reshare it with other users by sending additional Dragon Chat messages
         containing the link.
 
         [uploaded-files]: /help/manage-your-uploaded-files
@@ -10945,7 +10945,7 @@ paths:
       description: |
         Reorder the custom profile fields in the user's organization.
 
-        Custom profile fields are displayed in Zulip UI widgets in order; this
+        Custom profile fields are dispayed in Dragon Chat UI widgets in order; this
         endpoint allows administrative settings UI to change the field ordering.
 
         This endpoint is used to implement the dragging feature described in the
@@ -11875,7 +11875,7 @@ paths:
         or change their [email address visibility](/help/configure-email-visibility),
         either of which could change the value of their Zulip API email address.
 
-        **Changes**: New in Zulip Server 4.0 (feature level 39).
+        **Changes**: New in Dragon Chat Server 4.0 (feature level 39).
       x-curl-examples-parameters:
         oneOf:
           - type: include
@@ -13173,7 +13173,7 @@ paths:
                       safely make a request with this client capability and also request all three
                       event types (`user_settings`, `update_display_settings`,
                       `update_global_notifications`), and get exactly one copy of settings data on
-                      any server version. Clients can then use the `zulip_feature_level` in the
+                      any server version. Clients can then use the `dragon_chat_feature_level` in the
                       `/register` response or the presence/absence of a `user_settings` key to
                       determine where to look for the data.
 
@@ -13260,17 +13260,17 @@ paths:
                         type: integer
                         description: |
                           The initial value of `last_event_id` to pass to `GET /api/v1/events`.
-                      zulip_feature_level:
+                      dragon_chat_feature_level:
                         type: integer
                         description: |
                           The server's current [Zulip feature level](/api/changelog).
 
                           **Changes**: As of Zulip 3.0 (feature level 3), this is always present
                           in the endpoint's response. Previously, it was only present if
-                          `event_types` included `zulip_version`.
+                          `event_types` included `dragon_chat_version`.
 
                           New in Zulip 3.0 (feature level 1).
-                      zulip_version:
+                      dragon_chat_version:
                         type: string
                         description: |
                           The server's version number. This is often a release version number,
@@ -13279,17 +13279,17 @@ paths:
 
                           **Changes**: As of Zulip 3.0 (feature level 3), this is always present
                           in the endpoint's response. Previously, it was only present if
-                          `event_types` included `zulip_version`.
+                          `event_types` included `dragon_chat_version`.
 
                           [git-release]: https://zulip.readthedocs.io/en/latest/overview/release-lifecycle.html#git-versions
                       zulip_merge_base:
                         type: string
                         description: |
-                          The `git merge-base` between `zulip_version` and official branches
+                          The `git merge-base` between `dragon_chat_version` and official branches
                           in the public
                           [Zulip server and web app repository](https://github.com/zulip/zulip),
-                          in the same format as `zulip_version`. This will equal
-                          `zulip_version` if the server is not running a fork of the Zulip server.
+                          in the same format as `dragon_chat_version`. This will equal
+                          `dragon_chat_version` if the server is not running a fork of the Zulip server.
 
                           This will be `""` if the server does not know its `merge-base`.
 
@@ -13320,7 +13320,7 @@ paths:
                           Present if `custom_profile_fields` is present in `fetch_event_types`.
 
                           An array of objects; each object describes a type of custom profile field
-                          that could be configured on this Zulip server. Each custom profile type
+                          that could be configured on This Dragon Chat server. Each custom profile type
                           has an ID and the `type` property of a custom profile field is equal
                           to one of these IDs.
 
@@ -13763,7 +13763,7 @@ paths:
                           Present if `realm_embedded_bots` is present in `fetch_event_types`.
 
                           An array of dictionaries where each dictionary describes an type of embedded
-                          bot that is available to be configured on this Zulip server.
+                          bot that is available to be configured on This Dragon Chat server.
 
                           Clients only need these data if they contain UI for creating or administering bots.
                       realm_incoming_webhook_bots:
@@ -13771,7 +13771,7 @@ paths:
                           Present if `realm_incoming_webhook_bots` is present in `fetch_event_types`.
 
                           An array of dictionaries where each dictionary describes a type of incoming webhook
-                          integration that is available to be configured on this Zulip server.
+                          integration that is available to be configured on This Dragon Chat server.
 
                           Clients only need these data if they contain UI for creating or administering bots.
                         type: array
@@ -14531,7 +14531,7 @@ paths:
                               type: string
                             description: |
                               Array containing the names of the notification sound options
-                              supported by this Zulip server. Only relevant to support UI
+                              supported by This Dragon Chat server. Only relevant to support UI
                               for configuring notification sounds.
                           emojiset_choices:
                             description: |
@@ -15015,7 +15015,7 @@ paths:
                           [`client_capabilities`][capabilities] when registering the event queue.
 
                           Array containing the names of the notification sound options supported by
-                          this Zulip server. Only relevant to support UI for configuring notification
+                          This Dragon Chat server. Only relevant to support UI for configuring notification
                           sounds.
 
                           **Changes**: Deprecated in Zulip 5.0 (feature level 89). Clients
@@ -15767,7 +15767,7 @@ paths:
                           organization.
 
                           Giving permission via this setting does not guarantee that an
-                          organization will be listed in the Zulip communities directory.
+                          organization will be listed in the Dragon Chat communities directory.
 
                           **Changes**: New in Zulip 6.0 (feature level 129).
                       realm_video_chat_provider:
@@ -16148,7 +16148,7 @@ paths:
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          Whether this Zulip server is configured to allow organizations to
+                          Whether This Dragon Chat server is configured to allow organizations to
                           enable [digest emails](/help/digest-emails).
 
                           Relevant for administrative settings UI that can change the digest
@@ -16354,7 +16354,7 @@ paths:
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          Whether this Zulip server is a development environment. Used
+                          Whether This Dragon Chat server is a development environment. Used
                           to control certain features or UI (such as error popups)
                           that should only apply when connected to a Zulip development
                           environment.
@@ -16371,7 +16371,7 @@ paths:
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          This Zulip server's configured minimum required length for passwords.
+                          This Dragon Chat server's configured minimum required length for passwords.
                           Necessary for password change UI to show whether the password
                           will be accepted.
                       password_min_guesses:
@@ -16379,7 +16379,7 @@ paths:
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          This Zulip server's configured minimum `zxcvbn` minimum guesses.
+                          This Dragon Chat server's configured minimum `zxcvbn` minimum guesses.
                           Necessary for password change UI to show whether the password
                           will be accepted.
                       giphy_rating_options:
@@ -16414,13 +16414,13 @@ paths:
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          The maximum file size that can be uploaded to this Zulip server.
+                          The maximum file size that can be uploaded to This Dragon Chat server.
                       max_avatar_file_size_mib:
                         type: integer
                         description: |
                           Present if `realm` is present in `fetch_event_types`.
 
-                          The maximum avatar size that can be uploaded to this Zulip server.
+                          The maximum avatar size that can be uploaded to This Dragon Chat server.
                       server_inline_image_preview:
                         type: boolean
                         description: |
@@ -16523,7 +16523,7 @@ paths:
                           Present if `realm` is present in `fetch_event_types`.
 
                           The URL to a JSON file that describes which emoji names map to which
-                          emoji codes, for all Unicode emoji this Zulip server accepts.
+                          emoji codes, for all Unicode emoji This Dragon Chat server accepts.
 
                           The data at the given URL is a JSON object with one property, `code_to_names`.
                           The value of that property is a JSON object where each key is an
@@ -16999,7 +16999,7 @@ paths:
                               type: string
                             description: |
                               Array containing the names of the notification sound options
-                              supported by this Zulip server. Only relevant to support UI
+                              supported by This Dragon Chat server. Only relevant to support UI
                               for configuring notification sounds.
                           emojiset_choices:
                             description: |
@@ -17363,8 +17363,8 @@ paths:
                               },
                           },
                         "result": "success",
-                        "zulip_feature_level": 2,
-                        "zulip_version": "5.0-dev-1650-gc3fd37755f",
+                        "dragon_chat_feature_level": 2,
+                        "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
                         "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                       }
   /server_settings:
@@ -17508,7 +17508,7 @@ paths:
                               type: string
                               description: |
                                 URL to be used to initiate account registration using this method.
-                      zulip_feature_level:
+                      dragon_chat_feature_level:
                         type: integer
                         description: |
                           An integer indicating what features are
@@ -17521,7 +17521,7 @@ paths:
 
                           **Changes**: New in Zulip 3.0 (feature level 1). We recommend using an
                           implied value of 0 for Zulip servers that do not send this field.
-                      zulip_version:
+                      dragon_chat_version:
                         type: string
                         description: |
                           The server's version number. This is often a release version number,
@@ -17532,11 +17532,11 @@ paths:
                       zulip_merge_base:
                         type: string
                         description: |
-                          The `git merge-base` between `zulip_version` and official branches
+                          The `git merge-base` between `dragon_chat_version` and official branches
                           in the public
                           [Zulip server and web app repository](https://github.com/zulip/zulip),
-                          in the same format as `zulip_version`. This will equal
-                          `zulip_version` if the server is not running a fork of the Zulip server.
+                          in the same format as `dragon_chat_version`. This will equal
+                          `dragon_chat_version` if the server is not running a fork of the Zulip server.
 
                           This will be `""` if unavailable.
 
@@ -17624,7 +17624,7 @@ paths:
                             "google": true,
                             "saml": true,
                           },
-                        "zulip_version": "5.0-dev-1650-gc3fd37755f",
+                        "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
                         "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                         "push_notifications_enabled": false,
                         "msg": "",
@@ -19039,7 +19039,7 @@ paths:
         Delete all messages in a topic.
 
         Topics are a field on messages (not an independent data structure), so
-        deleting all the messages in the topic deletes the topic from Zulip.
+        deleting all the messages in the topic deletes the topic from Dragon Chat.
 
         Because this endpoint deletes messages in batches, it is possible for
         the request to time out after only deleting some messages in the topic.
@@ -20135,7 +20135,7 @@ components:
         messages:
           type: array
           description: |
-            Contains basic details on any Zulip messages that have been
+            Contains basic details on any Dragon Chat messages that have been
             sent referencing this [uploaded file](/api/upload-file).
             This includes messages sent by any user in the Zulip
             organization who sent a message containing a link to the
@@ -20472,7 +20472,7 @@ components:
                     type: string
                     description: |
                       A unique token that the third-party service can use to confirm
-                      that the request is indeed coming from Zulip.
+                      that the request is indeed coming from Dragon Chat.
                   interface:
                     type: integer
                     description: |

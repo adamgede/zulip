@@ -121,7 +121,7 @@ class TestMessageNotificationEmails(ZulipTestCase):
         if settings.EMAIL_GATEWAY_PATTERN != "":
             reply_to_addresses = [settings.EMAIL_GATEWAY_PATTERN % (t,) for t in tokens]
             reply_to_emails = [
-                str(Address(display_name="Zulip", addr_spec=address))
+                str(Address(display_name="Dragon Chat", addr_spec=address))
                 for address in reply_to_addresses
             ]
         else:

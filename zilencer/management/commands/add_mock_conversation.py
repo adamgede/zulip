@@ -42,7 +42,7 @@ From image editing program:
 
     def add_message_formatting_conversation(self) -> None:
         realm = get_realm("zulip")
-        stream = ensure_stream(realm, "zulip features", acting_user=None)
+        stream = ensure_stream(realm, "Dragon Chat features", acting_user=None)
 
         UserProfile.objects.filter(email__contains="stage").delete()
         starr = do_create_user(
@@ -138,7 +138,7 @@ From image editing program:
             '<div class="inline-preview-twitter"><div class="twitter-tweet">'
             '<a><img class="twitter-avatar" '
             'src="https://pbs.twimg.com/profile_images/424495004/GuidoAvatar_bigger.jpg"></a>'
-            "<p>Great blog post about Zulip's use of mypy: "
+            "<p>Great blog post About Dragon Chat's use of mypy: "
             "<a>http://blog.zulip.org/2016/10/13/static-types-in-python-oh-mypy/</a></p>"
             "<span>- Guido van Rossum (@gvanrossum)</span></div></div>"
         )

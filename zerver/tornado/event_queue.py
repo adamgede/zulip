@@ -21,7 +21,7 @@ from django.utils.translation import gettext as _
 from tornado import autoreload
 from typing_extensions import override
 
-from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, ZULIP_VERSION
+from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, DRAGON_CHAT_VERSION
 from zerver.lib.exceptions import JsonableError
 from zerver.lib.message_cache import MessageDict
 from zerver.lib.narrow_helpers import narrow_dataclasses_from_tuples
@@ -628,9 +628,9 @@ def load_event_queues(port: int) -> None:
 def send_restart_events() -> None:
     event: dict[str, Any] = dict(
         type="restart",
-        zulip_version=ZULIP_VERSION,
+        dragon_chat_version=DRAGON_CHAT_VERSION,
         zulip_merge_base=ZULIP_MERGE_BASE,
-        zulip_feature_level=API_FEATURE_LEVEL,
+        dragon_chat_feature_level=API_FEATURE_LEVEL,
         server_generation=settings.SERVER_GENERATION,
     )
     for client in clients.values():

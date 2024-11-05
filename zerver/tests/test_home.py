@@ -11,7 +11,7 @@ from django.test import override_settings
 from django.utils.timezone import now as timezone_now
 
 from corporate.models import Customer, CustomerPlan
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 from zerver.actions.create_user import do_create_user
 from zerver.actions.realm_settings import do_change_realm_plan_type, do_set_realm_property
 from zerver.actions.users import change_user_is_active
@@ -240,10 +240,10 @@ class HomeTest(ZulipTestCase):
         "user_settings",
         "user_status",
         "user_topics",
-        "zulip_feature_level",
+        "dragon_chat_feature_level",
         "zulip_merge_base",
         "zulip_plan_is_not_limited",
-        "zulip_version",
+        "dragon_chat_version",
     ]
 
     def test_home(self) -> None:
@@ -520,7 +520,7 @@ class HomeTest(ZulipTestCase):
                     "environment": "development",
                     "realm_key": "zulip",
                     "sample_rate": 1.0,
-                    "server_version": ZULIP_VERSION,
+                    "server_version": DRAGON_CHAT_VERSION,
                     "trace_rate": 0.1,
                     "user": {"id": user.id, "role": "Member"},
                 },
@@ -540,7 +540,7 @@ class HomeTest(ZulipTestCase):
                     "environment": "development",
                     "realm_key": "zulip",
                     "sample_rate": 1.0,
-                    "server_version": ZULIP_VERSION,
+                    "server_version": DRAGON_CHAT_VERSION,
                     "trace_rate": 0.1,
                 },
             )
@@ -648,7 +648,7 @@ class HomeTest(ZulipTestCase):
 
         result = self.client_get("/", HTTP_USER_AGENT="ZulipElectron/2.3.82")
         html = result.content.decode()
-        self.assertIn("You are using old version of the Zulip desktop", html)
+        self.assertIn("You are using old version of the Dragon Chat desktop", html)
 
     def test_unsupported_browser(self) -> None:
         user = self.example_user("hamlet")
@@ -700,7 +700,7 @@ class HomeTest(ZulipTestCase):
         self.assertEqual(result.status_code, 200)
         self.assert_in_response("I agree to the", result)
         self.assert_in_response(
-            "Administrators of this Zulip organization will be able to see this email address.",
+            "Administrators of this Dragon Chat organization will be able to see this email address.",
             result,
         )
 
@@ -729,7 +729,7 @@ class HomeTest(ZulipTestCase):
             result = self.client_get("/", dict(stream="Denmark"))
             self.assertEqual(result.status_code, 200)
             self.assert_in_response(
-                "Administrators of this Zulip organization will be able to see this email address.",
+                "Administrators of this Dragon Chat organization will be able to see this email address.",
                 result,
             )
 

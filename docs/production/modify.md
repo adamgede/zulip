@@ -45,7 +45,7 @@ Git guide][git-guide] if you need a primer):
   your changes are small or you're OK with risking downtime, you don't
   strictly need it; you just need an environment with Git installed.
 - **Important**. Determine what Zulip version you're running on your
-  server. You can check by inspecting `ZULIP_VERSION` in
+  server. You can check by inspecting `DRAGON_CHAT_VERSION` in
   `/home/zulip/deployments/current/version.py` (we'll use `2.0.4`
   below). If you apply your changes to the wrong version of Zulip,
   it's likely to fail and potentially cause downtime.

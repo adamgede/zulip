@@ -41,7 +41,7 @@ from confirmation.models import (
     get_object_from_key,
     render_confirmation_key_error,
 )
-from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, ZULIP_VERSION
+from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, DRAGON_CHAT_VERSION
 from zerver.context_processors import get_realm_from_request, login_context, zulip_default_context
 from zerver.decorator import do_login, log_view_func, process_client, require_post
 from zerver.forms import (
@@ -1258,9 +1258,9 @@ def api_get_server_settings(request: HttpRequest) -> HttpResponse:
     process_client(request)
     result = dict(
         authentication_methods=get_auth_backends_data(request),
-        zulip_version=ZULIP_VERSION,
+        dragon_chat_version=DRAGON_CHAT_VERSION,
         zulip_merge_base=ZULIP_MERGE_BASE,
-        zulip_feature_level=API_FEATURE_LEVEL,
+        dragon_chat_feature_level=API_FEATURE_LEVEL,
         push_notifications_enabled=push_notifications_configured(),
         is_incompatible=check_server_incompatibility(request),
     )

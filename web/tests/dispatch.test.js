@@ -796,7 +796,7 @@ run_test("realm_user", ({override}) => {
 run_test("restart", ({_override}) => {
     const event = event_fixtures.restart;
     dispatch(event);
-    assert_same(realm.zulip_version, event.zulip_version);
+    assert_same(realm.dragon_chat_version, event.dragon_chat_version);
     assert_same(realm.zulip_merge_base, event.zulip_merge_base);
 });
 

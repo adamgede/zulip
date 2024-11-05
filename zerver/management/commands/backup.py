@@ -11,7 +11,7 @@ from django.utils.timezone import now as timezone_now
 from typing_extensions import override
 
 from scripts.lib.zulip_tools import TIMESTAMP_FORMAT, parse_os_release, run
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 from zerver.lib.management import ZulipBaseCommand
 from zerver.logging_handlers import try_git_describe
 
@@ -41,7 +41,7 @@ class Command(ZulipBaseCommand):
             paths = []
 
             with open(os.path.join(tmp, "zulip-backup", "zulip-version"), "w") as f:
-                print(ZULIP_VERSION, file=f)
+                print(DRAGON_CHAT_VERSION, file=f)
                 git = try_git_describe()
                 if git:
                     print(git, file=f)

@@ -5,7 +5,7 @@ set -eu
 . "$(dirname "$0")"/lib/git-tools.bash
 
 usage() {
-    echo "Usage: $0 <ZULIP_VERSION>" >&2
+    echo "Usage: $0 <DRAGON_CHAT_VERSION>" >&2
     exit 1
 }
 

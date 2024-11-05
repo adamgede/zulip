@@ -59,7 +59,7 @@ if (sentry_params !== undefined) {
         environment: sentry_params.environment,
         tunnel: "/error_tracing",
 
-        release: "zulip-server@" + ZULIP_VERSION,
+        release: "zulip-server@" + DRAGON_CHAT_VERSION,
         integrations: [
             new Sentry.BrowserTracing({
                 startTransactionOnLocationChange: false,

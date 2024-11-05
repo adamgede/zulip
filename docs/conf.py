@@ -9,7 +9,7 @@ import sys
 from typing import Any
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from version import LATEST_RELEASE_VERSION, ZULIP_VERSION
+from version import LATEST_RELEASE_VERSION, DRAGON_CHAT_VERSION
 
 on_rtd = os.environ.get("READTHEDOCS") == "True"
 
@@ -21,11 +21,11 @@ extensions = [
     "sphinx_design",
 ]
 templates_path = ["_templates"]
-project = "Zulip"
+project = "Dragon Chat"
 copyright = "2012–2015 Dropbox, Inc., 2015–2021 Kandra Labs, Inc., and contributors"
 author = "The Zulip Team"
-version = ZULIP_VERSION
-release = ZULIP_VERSION
+version = DRAGON_CHAT_VERSION
+release = DRAGON_CHAT_VERSION
 exclude_patterns = ["_build", "README.md"]
 suppress_warnings = [
     "myst.header",

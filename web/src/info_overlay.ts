@@ -129,18 +129,18 @@ This text won't be visible until the user clicks.
         markdown: `\
 \`\`\`
 def zulip():
-    print "Zulip"
+    print "Dragon Chat"
 \`\`\``,
     },
     {
         markdown: `\
 \`\`\`python
 def zulip():
-    print "Zulip"
+    print "Dragon Chat"
 \`\`\``,
         output_html: `\
 <div class="codehilite"><pre><span class="k">def</span> <span class="nf">zulip</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">"Zulip"</span></pre></div>`,
+    <span class="k">print</span> <span class="s">"Dragon Chat"</span></pre></div>`,
     },
     {
         markdown: "Some inline math $$ e^{i \\pi} + 1 = 0 $$",

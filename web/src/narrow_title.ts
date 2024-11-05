@@ -94,7 +94,7 @@ export function redraw_title(): void {
         " - " +
         realm.realm_name +
         " - " +
-        "Zulip";
+        "Dragon Chat";
 
     document.title = new_title;
 }

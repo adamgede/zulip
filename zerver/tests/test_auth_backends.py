@@ -4068,7 +4068,7 @@ class GitHubAuthBackendTest(SocialAuthBase):
         self.assertEqual(data["full_name"], self.name)
         self.assertEqual(data["subdomain"], "zulip")
 
-    @override_settings(SOCIAL_AUTH_GITHUB_ORG_NAME="Zulip")
+    @override_settings(SOCIAL_AUTH_GITHUB_ORG_NAME="Dragon Chat")
     def test_social_auth_github_organization_not_member_failed(self) -> None:
         account_data_dict = self.get_account_data_dict(email=self.email, name=self.name)
         subdomain = "zulip"
@@ -4093,7 +4093,7 @@ class GitHubAuthBackendTest(SocialAuthBase):
             ],
         )
 
-    @override_settings(SOCIAL_AUTH_GITHUB_ORG_NAME="Zulip")
+    @override_settings(SOCIAL_AUTH_GITHUB_ORG_NAME="Dragon Chat")
     def test_social_auth_github_organization_member_success(self) -> None:
         account_data_dict = self.get_account_data_dict(email=self.email, name=self.name)
         with mock.patch(
@@ -5277,9 +5277,9 @@ class FetchAuthBackends(ZulipTestCase):
                     ("require_email_format_usernames", check_bool),
                     ("realm_url", check_string),
                     ("realm_uri", check_string),
-                    ("zulip_version", check_string),
+                    ("dragon_chat_version", check_string),
                     ("zulip_merge_base", check_string),
-                    ("zulip_feature_level", check_int),
+                    ("dragon_chat_feature_level", check_int),
                     ("push_notifications_enabled", check_bool),
                     ("realm_web_public_access_enabled", check_bool),
                     ("msg", check_string),

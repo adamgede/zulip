@@ -2702,7 +2702,7 @@ class UserSignUpTest(ZulipTestCase):
 
         existing_default_streams = DefaultStream.objects.filter(realm=realm)
         self.assert_length(existing_default_streams, 3)
-        expected_default_streams = ["Zulip", "sandbox", "Verona"]
+        expected_default_streams = ["Dragon Chat", "sandbox", "Verona"]
         for i, expected_default_stream in enumerate(expected_default_streams):
             self.assertEqual(existing_default_streams[i].stream.name, expected_default_stream)
             default_streams.append(existing_default_streams[i].stream)
@@ -4017,7 +4017,7 @@ class UserSignUpTest(ZulipTestCase):
         password = self.ldap_password("newuser")
         email = "newuser@zulip.com"
         subdomain = "zulip"
-        realm_name = "Zulip"
+        realm_name = "Dragon Chat"
 
         self.init_default_ldap_database()
         ldap_user_attr_map = {"full_name": "cn"}

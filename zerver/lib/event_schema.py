@@ -1279,9 +1279,9 @@ check_realm_user_remove = make_checker(realm_user_remove_event)
 restart_event = event_dict_type(
     required_keys=[
         ("type", Equals("restart")),
-        ("zulip_version", str),
+        ("dragon_chat_version", str),
         ("zulip_merge_base", str),
-        ("zulip_feature_level", int),
+        ("dragon_chat_feature_level", int),
         ("server_generation", int),
     ]
 )

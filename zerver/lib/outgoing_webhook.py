@@ -11,7 +11,7 @@ from django.utils.translation import gettext as _
 from requests import Response
 from typing_extensions import override
 
-from version import ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION
 from zerver.actions.message_send import check_send_message
 from zerver.lib.exceptions import JsonableError, StreamDoesNotExistError
 from zerver.lib.message_cache import MessageDict
@@ -33,7 +33,7 @@ class OutgoingWebhookServiceInterface(abc.ABC):
         self.session: requests.Session = OutgoingSession(
             role="webhook",
             timeout=settings.OUTGOING_WEBHOOK_TIMEOUT_SECONDS,
-            headers={"User-Agent": "ZulipOutgoingWebhook/" + ZULIP_VERSION},
+            headers={"User-Agent": "ZulipOutgoingWebhook/" + DRAGON_CHAT_VERSION},
         )
 
     @abc.abstractmethod

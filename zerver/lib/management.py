@@ -227,11 +227,11 @@ server via `ps -ef` or reading bash history. Prefer
             )
         except MultipleObjectsReturned:
             raise CommandError(
-                "This Zulip server contains multiple users with that email (in different realms);"
+                "This Dragon Chat server contains multiple users with that email (in different realms);"
                 " please pass `--realm` to specify which one to modify."
             )
         except UserProfile.DoesNotExist:
-            raise CommandError(f"This Zulip server does not contain a user with email '{email}'")
+            raise CommandError(f"This Dragon Chat server does not contain a user with email '{email}'")
 
     def get_client(self) -> Client:
         """Returns a Zulip Client object to be used for things done in management commands"""

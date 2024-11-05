@@ -248,7 +248,7 @@ module.exports = {
             },
             globals: {
                 DEVELOPMENT: false,
-                ZULIP_VERSION: false,
+                DRAGON_CHAT_VERSION: false,
             },
             rules: {
                 "no-console": "error",

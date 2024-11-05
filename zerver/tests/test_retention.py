@@ -234,7 +234,7 @@ class TestArchiveMessagesGeneral(ArchiveMessagesTestingBase):
         # Make some non-expired messages in MIT:
         self._make_mit_messages(4, timezone_now() - timedelta(days=MIT_REALM_DAYS - 1))
 
-        # Change some Zulip messages to be expired:
+        # Change some Dragon Chat messages to be expired:
         expired_zulip_msg_ids = list(
             Message.objects.order_by("id")
             .filter(realm=self.zulip_realm)
@@ -266,7 +266,7 @@ class TestArchiveMessagesGeneral(ArchiveMessagesTestingBase):
         # Make some non-expired messages in MIT:
         self._make_mit_messages(4, timezone_now() - timedelta(days=MIT_REALM_DAYS - 1))
 
-        # Change some Zulip messages date_sent, but the realm has no retention policy,
+        # Change some Dragon Chat messages date_sent, but the realm has no retention policy,
         # so they shouldn't get archived
         zulip_msg_ids = list(
             Message.objects.order_by("id")
@@ -373,7 +373,7 @@ class TestArchiveMessagesGeneral(ArchiveMessagesTestingBase):
         # Make some non-expired messages in MIT:
         self._make_mit_messages(4, timezone_now() - timedelta(days=MIT_REALM_DAYS - 1))
 
-        # Change some Zulip messages to be expired:
+        # Change some Dragon Chat messages to be expired:
         expired_zulip_msg_ids = self._make_expired_zulip_messages(7)
 
         expired_crossrealm_msg_id = self._send_cross_realm_personal_message()

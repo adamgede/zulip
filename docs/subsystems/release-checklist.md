@@ -61,7 +61,7 @@ preparing a new release.
   - Verify the changelog passes lint, and has the right release date.
   - _Major releases only:_ Adjust the `changelog.md` heading to have
     the stable release series boilerplate.
-  - Update `ZULIP_VERSION` and `LATEST_RELEASE_VERSION` in `version.py`.
+  - Update `DRAGON_CHAT_VERSION` and `LATEST_RELEASE_VERSION` in `version.py`.
   - _Major releases only:_ Update `API_FEATURE_LEVEL` to a feature
     level for the final release, and document a reserved range.
 - Run `tools/release` with the release version.
@@ -95,9 +95,9 @@ preparing a new release.
   DigitalOcean marketplace.
 - _Major releases only:_
   - Create a release branch (e.g., `4.x`).
-  - On the release branch, update `ZULIP_VERSION` in `version.py` to
+  - On the release branch, update `DRAGON_CHAT_VERSION` in `version.py` to
     the present release with a `+git` suffix, e.g., `4.0+git`.
-  - On `main`, update `ZULIP_VERSION` to the future major release with
+  - On `main`, update `DRAGON_CHAT_VERSION` to the future major release with
     a `-dev+git` suffix, e.g., `5.0-dev+git`. Make a Git tag for this
     update commit with a `-dev` suffix, e.g., `5.0-dev`. Push the tag
     to both zulip.git and zulip-internal.git to get a correct version
@@ -114,13 +114,13 @@ preparing a new release.
       `.github/workflows/production-suite.yml`.
   - Update /history page in `templates/corporate/history.md`.
 - _Minor releases only (e.g., 3.2):_
-  - On the release branch, update `ZULIP_VERSION` to the present
+  - On the release branch, update `DRAGON_CHAT_VERSION` to the present
     release with a `+git` suffix, e.g., `3.2+git`.
   - On main, update `LATEST_RELEASE_VERSION` with the released
     version, as well as the changelog changes from the release branch.
 - _Prereleases only (e.g., 7.0-beta3):_
   - Atop the prerelease commit (e.g., `7.0-beta3`), make a commit
-    updating `ZULIP_VERSION` to the prerelease version with a `+git`
+    updating `DRAGON_CHAT_VERSION` to the prerelease version with a `+git`
     suffix, e.g., `7.0-beta3+git`. Push this to `main`. (If `main` has
     already diverged from the prerelease, a merge commit will be
     needed here.)

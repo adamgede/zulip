@@ -113,7 +113,7 @@ class ZulipUpdateAnnouncementsTest(ZulipTestCase):
             ]
             self.zulip_update_announcements.extend(new_updates)
 
-            # verify zulip update announcements sent to configured stream.
+            # verify Dragon Chat update announcements sent to configured stream.
             with time_machine.travel(now + timedelta(days=10), tick=False):
                 send_zulip_update_announcements(skip_delay=False)
             realm.refresh_from_db()
@@ -184,7 +184,7 @@ class ZulipUpdateAnnouncementsTest(ZulipTestCase):
             ]
             self.zulip_update_announcements.extend(new_updates)
 
-            # verify zulip update announcements sent to configured stream.
+            # verify Dragon Chat update announcements sent to configured stream.
             with time_machine.travel(now + timedelta(days=2), tick=False):
                 send_zulip_update_announcements(skip_delay=False)
             realm.refresh_from_db()
@@ -276,7 +276,7 @@ class ZulipUpdateAnnouncementsTest(ZulipTestCase):
         self.assertEqual(realm.zulip_update_announcements_level, 0)
         self.assertIn(
             "Starting tomorrow, users in your organization will receive "
-            "[updates](/help/configure-automated-notices#zulip-update-announcements) about new Zulip features in "
+            "[updates](/help/configure-automated-notices#zulip-update-announcements) about new Dragon Chat features in "
             f"#**{realm.zulip_update_announcements_stream}>{realm.ZULIP_UPDATE_ANNOUNCEMENTS_TOPIC_NAME}**",
             group_direct_message.content,
         )

@@ -111,10 +111,10 @@ if args.from_git:
     subprocess.check_call(["./tools/cache-zulip-git-version"], preexec_fn=su_to_zulip)
 
 from version import ZULIP_MERGE_BASE as NEW_ZULIP_MERGE_BASE
-from version import ZULIP_VERSION as NEW_ZULIP_VERSION
+from version import DRAGON_CHAT_VERSION as NEW_DRAGON_CHAT_VERSION
 
 old_version = parse_version_from(DEPLOYMENTS_DIR + "/current")
-logging.info("Upgrading from %s to %s, in %s", old_version, NEW_ZULIP_VERSION, deploy_path)
+logging.info("Upgrading from %s to %s, in %s", old_version, NEW_DRAGON_CHAT_VERSION, deploy_path)
 old_merge_base = (
     parse_version_from(DEPLOYMENTS_DIR + "/current", merge_base=True) if args.from_git else ""
 )
@@ -391,7 +391,7 @@ def run_hooks(kind: Literal["pre-deploy", "post-deploy"]) -> None:
     # string" (which is a `git describe` output)
     env = os.environ.copy()
     env["ZULIP_OLD_VERSION"] = old_version
-    env["ZULIP_NEW_VERSION"] = NEW_ZULIP_VERSION
+    env["ZULIP_NEW_VERSION"] = NEW_DRAGON_CHAT_VERSION
 
     # preexec_fn=su_to_zulip normally handles this, but our explicit
     # env overrides that
@@ -407,7 +407,7 @@ def run_hooks(kind: Literal["pre-deploy", "post-deploy"]) -> None:
         # values to full commit hashes, as well as provide the
         # merge-base of the old/new commits with mainline.
         env["ZULIP_OLD_COMMIT"] = resolve_version_string(old_version)
-        env["ZULIP_NEW_COMMIT"] = resolve_version_string(NEW_ZULIP_VERSION)
+        env["ZULIP_NEW_COMMIT"] = resolve_version_string(NEW_DRAGON_CHAT_VERSION)
         env["ZULIP_OLD_MERGE_BASE_COMMIT"] = resolve_version_string(old_merge_base)
         env["ZULIP_NEW_MERGE_BASE_COMMIT"] = resolve_version_string(NEW_ZULIP_MERGE_BASE)
     for script_name in sorted(f for f in os.listdir(path) if f.endswith(".hook")):

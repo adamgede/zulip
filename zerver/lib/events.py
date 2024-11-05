@@ -9,7 +9,7 @@ from typing import Any
 from django.conf import settings
 from django.utils.translation import gettext as _
 
-from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, ZULIP_VERSION
+from version import API_FEATURE_LEVEL, ZULIP_MERGE_BASE, DRAGON_CHAT_VERSION
 from zerver.actions.default_streams import default_stream_groups_to_dicts_sorted
 from zerver.actions.realm_settings import get_realm_authentication_methods_for_page_params_api
 from zerver.actions.users import get_owned_bot_dicts
@@ -161,8 +161,8 @@ def fetch_initial_state_data(
         want = set(event_types).__contains__
 
     # Show the version info unconditionally.
-    state["zulip_version"] = ZULIP_VERSION
-    state["zulip_feature_level"] = API_FEATURE_LEVEL
+    state["dragon_chat_version"] = DRAGON_CHAT_VERSION
+    state["dragon_chat_feature_level"] = API_FEATURE_LEVEL
     state["zulip_merge_base"] = ZULIP_MERGE_BASE
 
     if want("alert_words"):

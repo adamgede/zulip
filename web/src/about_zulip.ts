@@ -17,8 +17,8 @@ export function launch(): void {
         },
     });
 
-    const zulip_version_clipboard = new ClipboardJS("#about-zulip .fa-copy.zulip-version");
-    zulip_version_clipboard.on("success", () => {
+    const dragon_chat_version_clipboard = new ClipboardJS("#about-zulip .fa-copy.zulip-version");
+    dragon_chat_version_clipboard.on("success", () => {
         show_copied_confirmation($("#about-zulip .fa-copy.zulip-version")[0]!);
     });
 
@@ -30,9 +30,9 @@ export function launch(): void {
 
 export function initialize(): void {
     const rendered_about_zulip = render_about_zulip({
-        zulip_version: realm.zulip_version,
+        dragon_chat_version: realm.dragon_chat_version,
         zulip_merge_base: realm.zulip_merge_base,
-        is_fork: realm.zulip_merge_base && realm.zulip_merge_base !== realm.zulip_version,
+        is_fork: realm.zulip_merge_base && realm.zulip_merge_base !== realm.dragon_chat_version,
     });
     $("#about-zulip-modal-container").append($(rendered_about_zulip));
 }
