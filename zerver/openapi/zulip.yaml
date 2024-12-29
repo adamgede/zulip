@@ -4073,6 +4073,14 @@ paths:
                                     [register](/api/register-queue) responses.
 
                                     **Changes**: New in Zulip 4.0 (feature level 59).
+                                zulip_version:
+                                  type: string
+                                  description: |
+                                    The Zulip version number, in the format where this appears
+                                    in the [server_settings](/api/get-server-settings) and
+                                    [register](/api/register-queue) responses.
+
+                                    **Changes**: New in Zulip 4.0 (feature level 59).
                                 zulip_merge_base:
                                   type: string
                                   description: |
@@ -4082,6 +4090,21 @@ paths:
 
                                     **Changes**: New in Zulip 5.0 (feature level 88).
                                 dragon_chat_feature_level:
+                                  type: integer
+                                  description: |
+                                    The [Zulip feature level](/api/changelog) of the server
+                                    after the restart.
+
+                                    Clients should use this to update their tracking of the
+                                    server's capabilities, and may choose to refetch their state
+                                    and create a new event queue when the API feature level has
+                                    changed in a way that the client finds significant. Clients
+                                    choosing to do so must implement a random delay strategy to
+                                    spread such restarts over 5 or more minutes to avoid creating
+                                    a synchronized thundering herd effect.
+
+                                    **Changes**: New in Zulip 4.0 (feature level 59).
+                                zulip_feature_level:
                                   type: integer
                                   description: |
                                     The [Zulip feature level](/api/changelog) of the server
@@ -4108,6 +4131,8 @@ paths:
                                   "type": "restart",
                                   "dragon_chat_feature_level": 57,
                                   "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
+                                  "zulip_feature_level": 57,
+                                  "zulip_version": "5.0-dev-1650-gc3fd37755f",
                                   "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                                 }
                             - type: object
@@ -13282,6 +13307,28 @@ paths:
                           `event_types` included `dragon_chat_version`.
 
                           [git-release]: https://zulip.readthedocs.io/en/latest/overview/release-lifecycle.html#git-versions
+                      zulip_feature_level:
+                        type: integer
+                        description: |
+                          The server's current [Zulip feature level](/api/changelog).
+
+                          **Changes**: As of Zulip 3.0 (feature level 3), this is always present
+                          in the endpoint's response. Previously, it was only present if
+                          `event_types` included `zulip_version`.
+
+                          New in Zulip 3.0 (feature level 1).
+                      zulip_version:
+                        type: string
+                        description: |
+                          The server's version number. This is often a release version number,
+                          like `2.1.7`. But for a server running a [version from Git][git-release],
+                          it will be a Git reference to the commit, like `5.0-dev-1650-gc3fd37755f`.
+
+                          **Changes**: As of Zulip 3.0 (feature level 3), this is always present
+                          in the endpoint's response. Previously, it was only present if
+                          `event_types` included `zulip_version`.
+
+                          [git-release]: https://zulip.readthedocs.io/en/latest/overview/release-lifecycle.html#git-versions
                       zulip_merge_base:
                         type: string
                         description: |
@@ -17365,6 +17412,8 @@ paths:
                         "result": "success",
                         "dragon_chat_feature_level": 2,
                         "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
+                        "zulip_feature_level": 2,
+                        "zulip_version": "5.0-dev-1650-gc3fd37755f",
                         "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                       }
   /server_settings:
@@ -17529,6 +17578,27 @@ paths:
                           it will be a Git reference to the commit, like `5.0-dev-1650-gc3fd37755f`.
 
                           [git-release]: https://zulip.readthedocs.io/en/latest/overview/release-lifecycle.html#git-versions
+                      zulip_feature_level:
+                        type: integer
+                        description: |
+                          An integer indicating what features are
+                          available on the server. The feature level increases monotonically;
+                          a value of N means the server supports all API features introduced
+                          before feature level N. This is designed to provide a simple way
+                          for client apps to decide whether the server supports a given
+                          feature or API change. See the [changelog](/api/changelog) for
+                          details on what each feature level means.
+
+                          **Changes**: New in Zulip 3.0 (feature level 1). We recommend using an
+                          implied value of 0 for Zulip servers that do not send this field.
+                      zulip_version:
+                        type: string
+                        description: |
+                          The server's version number. This is often a release version number,
+                          like `2.1.7`. But for a server running a [version from Git][git-release],
+                          it will be a Git reference to the commit, like `5.0-dev-1650-gc3fd37755f`.
+
+                          [git-release]: https://zulip.readthedocs.io/en/latest/overview/release-lifecycle.html#git-versions
                       zulip_merge_base:
                         type: string
                         description: |
@@ -17625,6 +17695,7 @@ paths:
                             "saml": true,
                           },
                         "dragon_chat_version": "5.0-dev-1650-gc3fd37755f",
+                        "zulip_version": "5.0-dev-1650-gc3fd37755f",
                         "zulip_merge_base": "5.0-dev-1646-gea6b21cd8c",
                         "push_notifications_enabled": false,
                         "msg": "",

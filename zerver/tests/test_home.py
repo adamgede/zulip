@@ -241,9 +241,11 @@ class HomeTest(ZulipTestCase):
         "user_status",
         "user_topics",
         "dragon_chat_feature_level",
+        "zulip_feature_level",
         "zulip_merge_base",
         "zulip_plan_is_not_limited",
         "dragon_chat_version",
+        "zulip_version",
     ]
 
     def test_home(self) -> None:

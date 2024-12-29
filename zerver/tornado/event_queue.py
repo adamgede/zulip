@@ -629,8 +629,10 @@ def send_restart_events() -> None:
     event: dict[str, Any] = dict(
         type="restart",
         dragon_chat_version=DRAGON_CHAT_VERSION,
+        zulip_version=DRAGON_CHAT_VERSION,
         zulip_merge_base=ZULIP_MERGE_BASE,
         dragon_chat_feature_level=API_FEATURE_LEVEL,
+        zulip_feature_level=API_FEATURE_LEVEL,
         server_generation=settings.SERVER_GENERATION,
     )
     for client in clients.values():

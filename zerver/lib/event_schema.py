@@ -1280,8 +1280,10 @@ restart_event = event_dict_type(
     required_keys=[
         ("type", Equals("restart")),
         ("dragon_chat_version", str),
+        ("zulip_version", str),
         ("zulip_merge_base", str),
         ("dragon_chat_feature_level", int),
+        ("zulip_feature_level", int),
         ("server_generation", int),
     ]
 )

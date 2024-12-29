@@ -394,6 +394,8 @@ const realm_schema = z.object({
     zulip_merge_base: z.string(),
     zulip_plan_is_not_limited: z.boolean(),
     dragon_chat_version: z.string(),
+    zulip_version: z.string(),
+    zulip_feature_level: NOT_TYPED_YET,
 });
 
 export const state_data_schema = z

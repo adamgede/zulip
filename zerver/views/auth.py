@@ -1259,8 +1259,10 @@ def api_get_server_settings(request: HttpRequest) -> HttpResponse:
     result = dict(
         authentication_methods=get_auth_backends_data(request),
         dragon_chat_version=DRAGON_CHAT_VERSION,
+        zulip_version=DRAGON_CHAT_VERSION,
         zulip_merge_base=ZULIP_MERGE_BASE,
         dragon_chat_feature_level=API_FEATURE_LEVEL,
+        zulip_feature_level=API_FEATURE_LEVEL,
         push_notifications_enabled=push_notifications_configured(),
         is_incompatible=check_server_incompatibility(request),
     )

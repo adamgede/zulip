@@ -166,6 +166,7 @@ export function dispatch_normal_event(event) {
 
         case "restart":
             realm.dragon_chat_version = event.dragon_chat_version;
+            realm.zulip_version = event.dragon_chat_version;
             realm.zulip_merge_base = event.zulip_merge_base;
             break;
 

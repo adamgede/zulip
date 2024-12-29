@@ -197,6 +197,7 @@ def zulip_default_context(request: HttpRequest) -> dict[str, Any]:
         "password_min_length": settings.PASSWORD_MIN_LENGTH,
         "password_min_guesses": settings.PASSWORD_MIN_GUESSES,
         "dragon_chat_version": DRAGON_CHAT_VERSION,
+        "zulip_version": DRAGON_CHAT_VERSION,
         "user_is_authenticated": request.user.is_authenticated,
         "settings_path": settings_path,
         "secrets_path": secrets_path,

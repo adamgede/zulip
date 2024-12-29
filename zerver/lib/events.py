@@ -163,6 +163,8 @@ def fetch_initial_state_data(
     # Show the version info unconditionally.
     state["dragon_chat_version"] = DRAGON_CHAT_VERSION
     state["dragon_chat_feature_level"] = API_FEATURE_LEVEL
+    state["zulip_version"] = DRAGON_CHAT_VERSION
+    state["zulip_feature_level"] = API_FEATURE_LEVEL
     state["zulip_merge_base"] = ZULIP_MERGE_BASE
 
     if want("alert_words"):
