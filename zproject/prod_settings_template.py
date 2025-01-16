@@ -761,7 +761,7 @@ SOCIAL_AUTH_SAML_SUPPORT_CONTACT = {
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 ## Session cookie expiry in seconds after the last page load
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2  # 2 weeks
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 180  # 180 days (approximately 6 months).
 
 ## Password strength requirements; learn about configuration at
 ## https://zulip.readthedocs.io/en/latest/production/security-model.html.
