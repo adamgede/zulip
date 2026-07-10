@@ -26,19 +26,20 @@ def is_outdated_server(user_profile: UserProfile | None) -> bool:
     # tarball was built.  Checking this allows us to catch cases where
     # someone has upgraded in the last year but to a release more than
     # a year old.
-    git_version_path = os.path.join(settings.DEPLOY_ROOT, "version.py")
-    release_build_time = datetime.fromtimestamp(os.path.getmtime(git_version_path), timezone.utc)
-
-    version_no_newer_than = min(LAST_SERVER_UPGRADE_TIME, release_build_time)
-    deadline = version_no_newer_than + timedelta(days=settings.SERVER_UPGRADE_NAG_DEADLINE_DAYS)
-
-    if user_profile is None or not user_profile.is_realm_admin:
-        # Administrators get warned at the deadline; all users 30 days later.
-        deadline += timedelta(days=30)
-
-    if timezone_now() > deadline:
-        return True
     return False
+    # git_version_path = os.path.join(settings.DEPLOY_ROOT, "version.py")
+    # release_build_time = datetime.fromtimestamp(os.path.getmtime(git_version_path), timezone.utc)
+
+    # version_no_newer_than = min(LAST_SERVER_UPGRADE_TIME, release_build_time)
+    # deadline = version_no_newer_than + timedelta(days=settings.SERVER_UPGRADE_NAG_DEADLINE_DAYS)
+
+    # if user_profile is None or not user_profile.is_realm_admin:
+        # Administrators get warned at the deadline; all users 30 days later.
+        # deadline += timedelta(days=30)
+
+    # if timezone_now() > deadline:
+        # return True
+    # return False
 
 
 def pop_numerals(ver: str) -> tuple[list[int], str]:
